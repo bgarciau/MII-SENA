@@ -1,0 +1,81 @@
+
+
+.carnet-body {
+    width: 20rem;
+    position: relative;
+    transform: translate(-50%, -50%);
+    top: 45%;
+    left: 50%;
+    /* margin-top: 2rem; */
+    padding-bottom: 10rem;
+}
+
+.carnet-container {
+    /* height: 505px; */
+    /* width: 305px; */
+    /* box-shadow: -1px 1px 13px 0px #000; */
+    box-shadow: inset -1px 1px 8px 0px #000;
+    background-size: cover;
+    padding: 10px;
+    overflow: hidden;
+    font-family: sans-serif;
+    
+}
+
+.centrar {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#Usuario{
+    margin-left: 380px;
+    margin-top:9%;
+    font-weight: bold;
+    font-size: larger;
+    color: #666666;
+    transform: rotate(245deg);
+    letter-spacing: 4px;
+}
+#logoSena{
+    margin-left: 127px;
+    margin-top: 20%;
+    transform: rotate(-25deg);
+}
+
+.shape {
+    background-color: #3a930d;
+    height: 200px;
+    width: 400;
+    margin-left: -10px;
+    position: relative;
+    top: -100px;
+    box-shadow: 0 2px 15px #000;
+    transform: rotate(25deg);
+    margin-bottom: 25px;
+}
+
+.img {
+        /* height: 188px;
+        width: 151px; */
+    /* background-image: url(paula.jpg); */
+    position: relative;
+    top: 100px;
+    margin-left: 180px;
+    background-size: cover;
+    border: none;
+    border-radius: 0%;
+    /* box-shadow: 0 2px 15px rgb(58, 54, 54); */
+    transform: rotate(-24.5deg);
+}
+
+.title {
+    color: green;
+}
+
+p {
+    padding-left: 30px;
+    padding-right: 30px;
+    line-height: 2;
+    color: rgb(105, green, green);
+    font-size: 15px;
+}
