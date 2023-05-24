@@ -17,6 +17,7 @@
     if (isset($_GET["id"])) {
         $id = $_GET["id"];
     }
+    $idEmpresa=$_SESSION["usuario"];
     ?>
     <!-- SE MUESTRAN LOS DATOS DE LA HOJA DE VIDA QUE YA HAN SIDO INGRESADOS Y TAMBIEN SE PUEDEN ACTUAIZAR -->
     <!-- EL APRENDIZ PUEDE VER SU PROPIA HOJA DE VIDA Y EDITARLA -->
@@ -423,48 +424,59 @@
                                 </button>
                             </h2>
                             <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse show">
+                            <?php
+                            $usuario = $_SESSION['usuario'];
+                            $Empresa = $base->query("SELECT * FROM empresaaprendiz WHERE fk_id_empresa=$usuario;")->fetchAll(PDO::FETCH_OBJ);
+                            foreach ($Empresa as $datosEmpresa) {
+                                ?>
                                 <div class="accordion-body">
                                     <div class="form-group">
-                                        <label for="nombre">Nombre de Funcionario:</label>
+                                    <input type="text" class="form-control" id="idAprendiz" name="idAprendiz" value="<?php echo $id ?>" hidden>
+                                    <input type="text" class="form-control" id="idEmpresa" name="idEmpresa" value="<?php echo $idEmpresa ?>" hidden>   
+                                    <label for="nombre">Nombre de Funcionario:</label>
                                         <input type="text" class="form-control" id="nombreRecursos"
-                                            placeholder="Ingrese el nombre del funcionario" name="nombreRecursos">
+                                        value="<?php echo $datosEmpresa->nom_funcionario ?>" name="nombreRecursos">
                                     </div>
                                     <div class="form-group">
                                         <label for="telefono">Teléfono:</label>
                                         <input type="text" class="form-control" id="telefonoRecursos"
-                                            placeholder="Ingrese el número de teléfono" name="telefonoRecursos">
+                                        value="<?php echo $datosEmpresa->telefono ?>" name="telefonoRecursos">
                                     </div>
                                     <div class="form-group">
                                         <label for="correo">Correo Electrónico:</label>
                                         <input type="email" class="form-control" id="correoRecursos"
-                                            placeholder="Ingrese el correo electrónico" name="correoRecursos">
+                                        value="<?php echo $datosEmpresa->correo ?>" name="correoRecursos">
                                     </div>
                                     <div class="form-group">
                                         <label for="observaciones">Observaciones:</label>
                                         <textarea class="form-control" id="observacionesRecursos"
-                                            placeholder="Ingrese las observaciones" name="observacionesRecursos"></textarea>
+                                        name="observacionesRecursos"><?php echo $datosEmpresa->observaciones ?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="contratar">¿Contratar al Aprendiz?</label><br>
-                                        <input type="checkbox" id="contratar" name="contratar" value="seleccionado">
+                                        <input onclick="cambiarCheck(1)" type="checkbox" id="contratar" name="contratar" value="si">
                                         <label for="contratar">Seleccionado</label>
-                                        <input type="checkbox" id="NoContratar" name="NoContratar" value="No seleccionado">
+                                        <input onclick="cambiarCheck(2)" type="checkbox" id="NoContratar" name="NoContratar" value="no">
                                         <label for="contratar">No Seleccionado</label>
+                                        <input  type="checkbox" id="contrata" name="contrata" value="" hidden>
                                     </div>
                                     <div class="form-group">
                                         <label for="ciudad">Ciudad de Diligenciamiento:</label>
                                         <input type="text" class="form-control" id="ciudadDilegenciamiento"
-                                            placeholder="Ingrese la ciudad de diligenciamiento" name="ciudadDilegenciamiento">
+                                        value="<?php echo $datosEmpresa->ciudad_diligenciamiento ?>" name="ciudadDilegenciamiento">
                                     </div>
                                     <div class="form-group">
                                         <label for="fecha">Fecha de Diligenciamiento:</label>
-                                        <input type="date" class="form-control" id="fechaDiligenciamiento" name="fechaDiligenciamiento">
+                                        <input type="date" class="form-control" id="fechaDiligenciamiento" name="fechaDiligenciamiento" value="<?php echo $datosEmpresa->fecha_diligenciamiento ?>">
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label for="firma">Firma:</label>
                                         <input type="file" class="form-control-file" id="firmaResursos" name="firmaResursos">
-                                    </div>
+                                    </div> -->
                                 </div>
+                                <?php
+                            }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -549,9 +561,17 @@
         $('#ciudadDilegenciamiento').prop("required",true);
         $('#fechaDiligenciamiento').prop("required",true);
         $('#firmaResursos').prop("required",true);
-        $('#contratar').prop("required",true);
-        $('#NoContratar').prop("required",true); 
+        // $('#contratar').prop("required",true);
+        // $('#NoContratar').prop("required",true); 
 
+}
+function cambiarCheck($i){
+    if($i==1){
+        $('#NoContratar').prop("checked",false); 
+    }
+    else if($i==2){
+        $('#contratar').prop("checked",false);
+    }   
 }
 </script>
 </html>

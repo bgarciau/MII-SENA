@@ -83,7 +83,10 @@
                                 <input type="submit" class="btn btn-success btn-block" value="ACTUALIZAR">
                             </div>
                             <div class="col d-flex justify-content-center">
+
+                                <a class="btn btn-danger btn-block" href="javascript:history.back(-1);">
                                 <input type="button" class="btn btn-danger btn-block" id="btnCerrarFicha" value="CANCELAR">
+                                </a>
                             </div>
                         </div>
                     </form>
@@ -132,8 +135,10 @@
                                 <input type="submit" class="btn btn-success btn-block" value="ACTUALIZAR">
                             </div>
                             <div class="col d-flex justify-content-center">
+                                <a class="btn btn-danger btn-block" href="javascript:history.back(-1);">
                                 <input type="button" class="btn btn-danger btn-block" id="btnCerrarPrograma"
                                     value="CANCELAR">
+                                </a>
                             </div>
                         </div>
                     </form>
@@ -147,7 +152,7 @@
                     EDITAR CENTRO:
                 </div>
                 <?php
-                $centros = $base->query("SELECT * FROM centros_formacion")->fetchAll(PDO::FETCH_OBJ);
+                $centros = $base->query("SELECT * FROM centros_formacion WHERE pk_id_cefo=$codigo")->fetchAll(PDO::FETCH_OBJ);
                 foreach ($centros as $datosCentro) {
                     ?>
                     <form class="p-4" method="POST" action="../controller/crudFormacion.php?accion=editar&tipo=centro">
@@ -188,7 +193,9 @@
                                 <input type="submit" class="btn btn-success btn-block" value="ACTUALIZAR">
                             </div>
                             <div class="col d-flex justify-content-center">
+                                <a class="btn btn-danger btn-block" href="javascript:history.back(-1);">
                                 <input type="button" class="btn btn-danger btn-block" id="btnCerrarCentro" value="CANCELAR">
+                                </a>
                             </div>
                         </div>
                     </form>
