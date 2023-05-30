@@ -66,9 +66,9 @@ else if ($tipoUsr == 3) {
     // Inserta en la base de datos un nuevo usuario
     try {
         // crea el usuario
-        $sql = "INSERT INTO usuarios (pk_id_usr,usr_empresa, usr_nombre, usr_apellidos, usr_email, usr_telefono, login_pass,fk_id_tipo_usr ) VALUES (?,?,?,?,?,?,?,?)";
+        $sql = "UPDATE usuarios SET usr_empresa=?, usr_nombre=?, usr_apellidos=?, usr_email=?, usr_telefono=?, login_pass=?,fk_id_tipo_usr=? WHERE pk_id_usr=$nit";
         $stmt = $base->prepare($sql);
-        $stmt->execute([$nit,$nombreEmpresa, $nombres, $apellidos, $correo,  $telefono, $contrasena, $tipoUsr]);
+        $stmt->execute([$nombreEmpresa, $nombres, $apellidos, $correo,  $telefono, $contrasena, $tipoUsr]);
 
     } catch (Exception $e) {
         echo $e;
@@ -86,14 +86,13 @@ else if ($tipoUsr == 4) {
     $correo = $_POST['correo'];
     $telefono = $_POST['telefono'];
     $contrasena = $_POST['contrasena'];
-    $foto = "../fotos/defecto.jpg";
 
     // Inserta en la base de datos un nuevo usuario
     try {
         // crea el usuario
-        $sql = "INSERT INTO usuarios (pk_id_usr, usr_nombre, usr_apellidos, usr_email,usr_rh, usr_telefono, login_pass,fk_id_tipo_doc, fk_id_tipo_usr,foto ) VALUES (?,?,?,?,?,?,?,?,?,?)";
+        $sql = "UPDATE usuarios SET usr_nombre=?, usr_apellidos=?, usr_email=?,usr_rh=?, usr_telefono=?, login_pass=?,fk_id_tipo_doc=?, fk_id_tipo_usr=? WHERE pk_id_usr=$documento";
         $stmt = $base->prepare($sql);
-        $stmt->execute([$documento, $nombres, $apellidos, $correo, $rh, $telefono, $contrasena, $tipoDocumento, $tipoUsr, $foto]);
+        $stmt->execute([$nombres, $apellidos, $correo, $rh, $telefono, $contrasena, $tipoDocumento, $tipoUsr]);
 
     } catch (Exception $e) {
         echo $e;

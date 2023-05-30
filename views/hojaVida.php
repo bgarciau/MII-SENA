@@ -26,6 +26,7 @@
     <div style="min-height: 85vh;">
         <div class="container">
             <h1 class="text-center">HOJA DE VIDA</h1>
+            <a target="_blank" href="pdf.php?id=<?php echo $id ?>"><button class="btn btn-danger me-md-2" type="button"><i class="bi bi-file-earmark-pdf">GENERAR PDF</i></button></a>
         </div>
         <?php
         $usuario = $base->query("SELECT * FROM usuarios WHERE pk_id_usr=$id")->fetchAll(PDO::FETCH_OBJ);
@@ -74,7 +75,7 @@
                                         <div class="col form-group">
                                             <label for="fecha_nacimiento">Fecha de nacimiento:</label>
                                             <input type="date" class="form-control" id="fecha_nacimiento"
-                                                name="fecha_nacimiento" value="<?php if(isset($datos->usr_fecha_nacimiento)){echo $datos->usr_fecha_nacimiento;} ?>" required>
+                                                name="fecha_nacimiento" value="<?php if(isset($datos->usr_fecha_nacimiento)){echo $datos->usr_fecha_nacimiento;} ?>" max="<?php echo date('Y-m-d') ?>" required>
                                         </div>
                                         <div class="col form-group">
                                             <label for="telefonos">Teléfonos:</label>
@@ -157,7 +158,7 @@
                                         <label for="nivel">Nivel</label>
                                         <select class="form-control" id="nivel" name="nivel">
                                             <?php if(isset($estudio2->tipo_estudio)){?> <option value="<?php echo $estudio2->tipo_estudio ?>"><?php echo $estudio2->tipo_estudio ?></option> <?php }else{?>
-                                            <option selected>Seleccione una opción</option>
+                                            <option value="">Seleccione una opción</option>
                                             <?php } ?>
                                             <option value="Tecnico">Tecnico</option>
                                             <option value="Tecnologo">Tecnologo</option>
@@ -426,7 +427,8 @@
                             <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse show">
                             <?php
                             $usuario = $_SESSION['usuario'];
-                            $Empresa = $base->query("SELECT * FROM empresaaprendiz WHERE fk_id_empresa=$usuario;")->fetchAll(PDO::FETCH_OBJ);
+                            $Empresa = $base->query("SELECT * FROM empresaaprendiz WHERE fk_id_empresa=$usuario and fk_id_aprendiz=$id;")->fetchAll(PDO::FETCH_OBJ);
+                            $existe=0;
                             foreach ($Empresa as $datosEmpresa) {
                                 ?>
                                 <div class="accordion-body">
@@ -475,7 +477,53 @@
                                     </div> -->
                                 </div>
                                 <?php
+                                $existe=1;
                             }
+                            if($existe==0){
+                                ?>
+                                <div class="accordion-body">
+                                    <div class="form-group">
+                                    <input type="text" class="form-control" id="idAprendiz" name="idAprendiz" value="<?php echo $id ?>" hidden>
+                                    <input type="text" class="form-control" id="idEmpresa" name="idEmpresa" value="<?php echo $idEmpresa ?>" hidden>   
+                                    <label for="nombre">Nombre de Funcionario:</label>
+                                        <input type="text" class="form-control" id="nombreRecursos" name="nombreRecursos">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="telefono">Teléfono:</label>
+                                        <input type="text" class="form-control" id="telefonoRecursos" name="telefonoRecursos">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="correo">Correo Electrónico:</label>
+                                        <input type="email" class="form-control" id="correoRecursos" name="correoRecursos">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="observaciones">Observaciones:</label>
+                                        <textarea class="form-control" id="observacionesRecursos"
+                                        name="observacionesRecursos"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contratar">¿Contratar al Aprendiz?</label><br>
+                                        <input onclick="cambiarCheck(1)" type="checkbox" id="contratar" name="contratar" value="si">
+                                        <label for="contratar">Seleccionado</label>
+                                        <input onclick="cambiarCheck(2)" type="checkbox" id="NoContratar" name="NoContratar" value="no">
+                                        <label for="contratar">No Seleccionado</label>
+                                        <input  type="checkbox" id="contrata" name="contrata" value="" hidden>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ciudad">Ciudad de Diligenciamiento:</label>
+                                        <input type="text" class="form-control" id="ciudadDilegenciamiento" name="ciudadDilegenciamiento">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="fecha">Fecha de Diligenciamiento:</label>
+                                        <input type="date" class="form-control" id="fechaDiligenciamiento" name="fechaDiligenciamiento">
+                                    </div>
+                                    <!-- <div class="form-group">
+                                        <label for="firma">Firma:</label>
+                                        <input type="file" class="form-control-file" id="firmaResursos" name="firmaResursos">
+                                    </div> -->
+                                </div>
+                                <?php
+                            } 
                                 ?>
                             </div>
                         </div>

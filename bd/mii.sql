@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 17-05-2023 a las 20:08:50
+-- Tiempo de generación: 26-05-2023 a las 17:43:16
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.2.0
 
@@ -51,6 +51,36 @@ INSERT INTO `centros_formacion` (`pk_id_cefo`, `cefo_nom_centro_formacion`, `cef
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `empresaaprendiz`
+--
+
+DROP TABLE IF EXISTS `empresaaprendiz`;
+CREATE TABLE IF NOT EXISTS `empresaaprendiz` (
+  `pk_seleccion` int NOT NULL AUTO_INCREMENT,
+  `nom_funcionario` varchar(200) DEFAULT NULL,
+  `telefono` varchar(20) NOT NULL,
+  `correo` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `observaciones` varchar(500) NOT NULL,
+  `contratar` varchar(20) NOT NULL,
+  `ciudad_diligenciamiento` varchar(40) NOT NULL,
+  `fecha_diligenciamiento` date NOT NULL,
+  `fk_id_empresa` int NOT NULL,
+  `fk_id_aprendiz` int NOT NULL,
+  PRIMARY KEY (`pk_seleccion`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `empresaaprendiz`
+--
+
+INSERT INTO `empresaaprendiz` (`pk_seleccion`, `nom_funcionario`, `telefono`, `correo`, `observaciones`, `contratar`, `ciudad_diligenciamiento`, `fecha_diligenciamiento`, `fk_id_empresa`, `fk_id_aprendiz`) VALUES
+(1, 'BRAYAN', '23123123', 'brayanra@gmail.com', 'v', 'si', 'Manizales', '2023-05-24', 3, 1010028095),
+(5, 'David', '321321', 'david@gmail.com', 'c', 'si', 'Manizales', '2023-05-25', 4444, 1002),
+(6, 'BRAYAN', '321321', 'brayanra@gmail.com', 'sfdsdfs', 'si', 'Manizales', '2023-05-25', 3, 1002);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `estudio`
 --
 
@@ -66,17 +96,18 @@ CREATE TABLE IF NOT EXISTS `estudio` (
   `fk_id_usr` int NOT NULL,
   PRIMARY KEY (`pk_id_estudio`),
   KEY `fk_Estudio_Usuarios1` (`fk_id_usr`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `estudio`
 --
 
 INSERT INTO `estudio` (`pk_id_estudio`, `numero`, `estudio_titulo`, `estudio_institucion`, `estudio_fecha_grado`, `estudio_semestres_aprobados`, `tipo_estudio`, `fk_id_usr`) VALUES
-(15, 1, NULL, NULL, NULL, NULL, 'BACHILLER', 1010028095),
-(20, 1, NULL, NULL, NULL, NULL, 'BACHILLER', 1),
+(15, 1, 'BACHILLER', 'coelgio12 1', '2023-05-21', NULL, 'BACHILLER', 1010028095),
 (21, 1, 'BACHILLER', 'ENSC', '2018-12-01', NULL, 'BACHILLER', 1002),
-(23, 2, 'ADSI', 'sena', NULL, 8, 'Tecnologo', 1002);
+(25, 1, NULL, NULL, NULL, NULL, 'BACHILLER', 1),
+(26, 2, 'BACHILLER', 'sena', NULL, 8, 'Tecnologo', 1002),
+(27, 2, 'ADSI', 'SENA', NULL, 8, 'Tecnologo', 1010028095);
 
 -- --------------------------------------------------------
 
@@ -183,6 +214,7 @@ DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `pk_id_usr` int NOT NULL,
   `usr_nombre` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+  `usr_empresa` varchar(200) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `usr_apellidos` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
   `usr_telefono` int NOT NULL,
   `usr_email` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
@@ -190,7 +222,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `usr_direccion` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `usr_estrato` int DEFAULT NULL,
   `usr_ciudad` varchar(200) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `usr_pagina` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `usr_hv` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `usr_contacto` int DEFAULT NULL,
   `usr_cargo` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `usr_fecha_nacimiento` date DEFAULT NULL,
@@ -210,13 +242,16 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`pk_id_usr`, `usr_nombre`, `usr_apellidos`, `usr_telefono`, `usr_email`, `usr_rh`, `usr_direccion`, `usr_estrato`, `usr_ciudad`, `usr_pagina`, `usr_contacto`, `usr_cargo`, `usr_fecha_nacimiento`, `usr_libreta_militar`, `fk_id_ficha`, `fk_id_tipo_doc`, `fk_id_tipo_usr`, `login_pass`, `foto`) VALUES
-(1, 'aprendiz', 'aprendiz', 1, '1@sena.com', 'O+', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 123, NULL, 1, '123', '../fotos/defecto.jpg'),
-(2, 'funcionario', '', 312423, 'funcionario@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 'funcionario', '../fotos/123.jpg'),
-(3, 'empresa', '', 32141245, 'empresaP@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 3, 'empresa', '../fotos/foto3.jpg'),
-(4, 'instructor', 'instructor', 42, 'instructor@sena.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, '123', '../fotos/jesus.jpg'),
-(1002, 'Brayan', 'Garcia Useda', 314, 'brayan@gmail.com', 'O+', 'cr 32a #32-14', 1, 'manizales', NULL, NULL, NULL, '2001-04-30', 'NO', 123, 1, 1, '123', '../fotos/defecto.jpg'),
-(1010028095, 'Cristian', 'Cruz', 316484542, 'cristian10100@outlook.com', 'A+', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 123, NULL, 1, '1234', '../fotos/IMG_20230517_092757.jpg');
+INSERT INTO `usuarios` (`pk_id_usr`, `usr_nombre`, `usr_empresa`, `usr_apellidos`, `usr_telefono`, `usr_email`, `usr_rh`, `usr_direccion`, `usr_estrato`, `usr_ciudad`, `usr_hv`, `usr_contacto`, `usr_cargo`, `usr_fecha_nacimiento`, `usr_libreta_militar`, `fk_id_ficha`, `fk_id_tipo_doc`, `fk_id_tipo_usr`, `login_pass`, `foto`) VALUES
+(1, '2', NULL, '2', 1, '1@1.com', 'AB-', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 123, 3, 1, '123', '../fotos/chu.jpg'),
+(2, 'funcionario', NULL, 'rodriguez', 31242777, 'funcionario@gmail.com', 'O-', NULL, NULL, NULL, NULL, NULL, 'f', NULL, NULL, NULL, 1, 2, 'funcionario', '../fotos/123.jpg'),
+(3, 'empresa', 'empresaaa', 'rodri', 321412, 'empresaP@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 3, 'empresa', ''),
+(99, 'Jesus DavidD', NULL, 'Agudelo Linux', 1312319, 'jesus@sena.com', 'O+', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 4, '123', '../fotos/defecto.jpg'),
+(999, 'Jesus David', NULL, 'Agudelo Linux', 131231, 'jesus@sena.com', 'O+', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 4, '123', '../fotos/defecto.jpg'),
+(1002, 'Brayan', NULL, 'Garcia Useda', 314, 'brayan@gmail.com', 'O+', 'cr 32a #32-14', 1, 'manizales', 'si', NULL, NULL, '2001-04-30', 'NO', 123, 1, 1, '123', '../fotos/defecto.jpg'),
+(1122, 'chucho', NULL, 'linux2', 23124999, 'chucho@sena.com', 'AB -', NULL, NULL, NULL, NULL, NULL, 'cargpo', NULL, NULL, NULL, 1, 2, '123', '../fotos/defecto.jpg'),
+(4444, 'Jorge', 'Prometalicos', 'prometalicos', 123123123, 'jorge@pro.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 3, '123', ''),
+(1010028095, 'Cristian', NULL, 'Cruz', 316484542, 'cristian10100@outlook.com', 'A+', 'calle 2446 .12', 23, 'manizales', 'si', NULL, NULL, '2023-05-11', 'NO', 123, NULL, 1, '1234', '../fotos/IMG_20230517_092757.jpg');
 
 --
 -- Restricciones para tablas volcadas

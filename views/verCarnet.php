@@ -19,7 +19,7 @@
     ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <img src="images/mii.png" alt="" height="70px">
+            <img src="../images/mii2.png" alt="" height="70px">
         </div>
     </nav>
     <!-- MUESTRA EL CARNET, SIN NECESIDAD DE INICIAR SESION, SOLO CON ESCANEAR EL QR -->

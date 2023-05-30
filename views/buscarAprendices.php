@@ -12,10 +12,13 @@
     session_start();
     require_once("header.php");
     include('../controller/conexion.php');
-    $programa = "todos";
+    // $programa = "todos";
     $tipo=$_SESSION['tipo'];
     if(isset($_GET['programa'])){
         $programa = $_GET['programa'];
+    }
+    if(isset($_GET['etapa'])){
+        $etapa = $_GET['etapa'];
     }
     ?>
     <div style="min-height: 85vh;">
@@ -35,20 +38,26 @@
                                 <th scope="col">Apellidos</th>
                                 <th scope="col">Ficha</th>
                                 <th scope="col">Programa</th>
+                                <th scope="col">Etapa</th>
                                 <th scope="col">Correo</th>
                                 <th scope="col">Telefono</th>
-                                <th scope="col">HV</th>
+                                <th scope="col">Opciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             <!-- FILTROS DE LA TABLA PARA LA EMPRESA -->
                             <?php
-                            if($programa=="todos"){
+                            if(!isset($programa) and !isset($etapa)){
                                 $query="SELECT * FROM fichas";
                             }
                             else{
-                                $query="SELECT * FROM fichas WHERE fk_id_pro=$programa";
+                            if($programa=="todos"){
+                                $query="SELECT * FROM fichas WHERE ficha_etapa='$etapa'";
                             }
+                            else{
+                                $query="SELECT * FROM fichas WHERE fk_id_pro=$programa and ficha_etapa='$etapa'";
+                            }
+                        }
                             $fichas = $base->query($query)->fetchAll(PDO::FETCH_OBJ);
                             $i = 1;
                             foreach ($fichas as $datosFicha) {
@@ -83,6 +92,9 @@
                                             ?>
                                         </td>
                                         <td>
+                                            <?php echo $datosFicha->ficha_etapa; ?>
+                                        </td>
+                                        <td>
                                             <?php echo $usuarios->usr_email; ?>
                                         </td>
                                         <td>
@@ -92,6 +104,7 @@
                                             <a class="text-primary"
                                                 href="hojaVida.php?id=<?php echo $usuarios->pk_id_usr; ?>">
                                                 <i class="bi bi-file-earmark-text-fill">VER</i></a>
+                                                <br>
                                                 <!-- OPCIONES QUE SOLAMENTE EL FUNCIONARIO PUEDE VER Y EJECUTAR -->
                                                 <?php if($tipo==2){ ?>
                                                 <a class="text-warning"
@@ -127,7 +140,12 @@
 <script>
     // INICIALIZA LA TABLA CON LA LIBRERIA DATATABLE
      $(document).ready(function () {
-        $('#tablaAprendices').DataTable();
+        $('#tablaAprendices').DataTable({
+    "language": {
+      "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+    }
+  });
     });
+
 </script>
 </html>

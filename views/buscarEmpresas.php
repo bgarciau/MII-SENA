@@ -85,7 +85,11 @@
 </body>
 <script>
      $(document).ready(function () {
-        $('#tablaEmpresas').DataTable();
+        $('#tablaEmpresas').DataTable({
+    "language": {
+      "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+    }
+  });
     });
 </script>
 </html>

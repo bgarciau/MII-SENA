@@ -29,11 +29,13 @@
                             <div class="form-row">
                                 <div class="col form-group">
                                     <label for="nombres">Nombres:</label>
-                                    <input type="text" class="form-control" id="nombres" name="nombres" value="<?php echo $usuarios->usr_nombre ?>" required>
+                                    <input type="text" class="form-control" id="nombres" name="nombres"
+                                        value="<?php echo $usuarios->usr_nombre ?>" required>
                                 </div>
                                 <div class="col form-group">
                                     <label for="apellidos">Apellidos:</label>
-                                    <input type="text" class="form-control" id="apellidos" name="apellidos" value="<?php echo $usuarios->usr_apellidos ?>" required>
+                                    <input type="text" class="form-control" id="apellidos" name="apellidos"
+                                        value="<?php echo $usuarios->usr_apellidos ?>" required>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -54,33 +56,49 @@
                                 </div>
                                 <div class="col form-group">
                                     <label for="documento">Documento:</label>
-                                    <input type="tel" class="form-control" id="documento" name="documento" value="<?php echo $usuarios->pk_id_usr ?>" readonly>
+                                    <input type="tel" class="form-control" id="documento" name="documento"
+                                        value="<?php echo $usuarios->pk_id_usr ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col form-group ">
                                     <label for="rh">Rh:</label>
-                                    <input type="text" class="form-control" id="rh" name="rh" value="<?php echo $usuarios->usr_rh ?>" required>
+                                    <select class="form-select" name="rh" id="rh" required>
+                                        <option value="<?php echo $usuarios->pk_id_usr ?>"><?php echo $usuarios->usr_rh ?>
+                                        </option>
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                    </select>
                                 </div>
                                 <div class="col form-group">
                                     <label for="ficha">Numero Ficha:</label>
-                                    <input type="text" class="form-control" id="ficha" name="ficha" value="<?php echo $usuarios->fk_id_ficha ?>" required>
+                                    <input type="text" class="form-control" id="ficha" name="ficha"
+                                        value="<?php echo $usuarios->fk_id_ficha ?>" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col form-group">
                                     <label for="correo">Correo electrónico:</label>
-                                    <input type="email" class="form-control" id="correo" name="correo" value="<?php echo $usuarios->usr_email ?>" required>
+                                    <input type="email" class="form-control" id="correo" name="correo"
+                                        value="<?php echo $usuarios->usr_email ?>" required>
                                 </div>
                                 <div class="col form-group">
                                     <label for="telefono">Teléfono:</label>
-                                    <input type="tel" class="form-control" id="telefono" name="telefono" value="<?php echo $usuarios->usr_telefono ?>" required>
+                                    <input type="tel" class="form-control" id="telefono" name="telefono"
+                                        value="<?php echo $usuarios->usr_telefono ?>" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col form-group">
                                     <label for="contrasena">Contraseña:</label>
-                                    <input type="password" class="form-control" id="contrasena" name="contrasena" value="<?php echo $usuarios->login_pass ?>" required>
+                                    <input type="password" class="form-control" id="contrasena" name="contrasena"
+                                        value="<?php echo $usuarios->login_pass ?>" required>
                                 </div>
                                 <div class="col form-group">
                                     <label for="contrasena">Confirmar Contraseña:</label>
@@ -111,38 +129,45 @@
                                 <input type="text" class="form-control" id="tipoUsr" name="tipoUsr" value=3 hidden>
                                 <div class="form-row">
                                     <div class="col form-group">
-                                        <label for="nombreEmpresa">Nombre Empresa:</label> 
-                                        <input type="tel" class="form-control" id="nombreEmpresa" name="nombreEmpresa" value="<?php echo $usuarios->usr_empresa ?>" required>
+                                        <label for="nombreEmpresa">Nombre Empresa:</label>
+                                        <input type="tel" class="form-control" id="nombreEmpresa" name="nombreEmpresa"
+                                            value="<?php echo $usuarios->usr_empresa ?>" required>
                                     </div>
                                     <div class="col form-group">
                                         <label for="nit">Nit:</label>
-                                        <input type="tel" class="form-control" id="nit" name="nit" value="<?php echo $usuarios->pk_id_usr ?>" required>
+                                        <input type="tel" class="form-control" id="nit" name="nit"
+                                            value="<?php echo $usuarios->pk_id_usr ?>" required>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="col form-group">
                                         <label for="nombres">Nombre encargado:</label>
-                                        <input type="text" class="form-control" id="nombres" name="nombres" value="<?php echo $usuarios->usr_nombre ?>" required>
+                                        <input type="text" class="form-control" id="nombres" name="nombres"
+                                            value="<?php echo $usuarios->usr_nombre ?>" required>
                                     </div>
                                     <div class="col form-group">
                                         <label for="apellidos">Apellidos:</label>
-                                        <input type="text" class="form-control" id="apellidos" name="apellidos" value="<?php echo $usuarios->usr_apellidos ?>" required>
+                                        <input type="text" class="form-control" id="apellidos" name="apellidos"
+                                            value="<?php echo $usuarios->usr_apellidos ?>" required>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="col form-group">
                                         <label for="correo">Correo electrónico:</label>
-                                        <input type="email" class="form-control" id="correo" name="correo" value="<?php echo $usuarios->usr_email ?>" required>
+                                        <input type="email" class="form-control" id="correo" name="correo"
+                                            value="<?php echo $usuarios->usr_email ?>" required>
                                     </div>
                                     <div class="col form-group">
                                         <label for="telefono">Teléfono:</label>
-                                        <input type="tel" class="form-control" id="telefono" name="telefono" value="<?php echo $usuarios->usr_telefono ?>" required>
+                                        <input type="tel" class="form-control" id="telefono" name="telefono"
+                                            value="<?php echo $usuarios->usr_telefono ?>" required>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="col form-group">
                                         <label for="contrasena">Contraseña:</label>
-                                        <input type="password" class="form-control" id="contrasena" name="contrasena" value="<?php echo $usuarios->login_pass ?>" required>
+                                        <input type="password" class="form-control" id="contrasena" name="contrasena"
+                                            value="<?php echo $usuarios->login_pass ?>" required>
                                     </div>
                                     <div class="col form-group">
                                         <label for="contrasena">Confirmar Contraseña:</label>
@@ -173,11 +198,13 @@
                                     <div class="form-row">
                                         <div class="col form-group">
                                             <label for="nombres">Nombres:</label>
-                                            <input type="text" class="form-control" id="nombres" name="nombres" value="<?php echo $usuarios->usr_nombre ?>" required>
+                                            <input type="text" class="form-control" id="nombres" name="nombres"
+                                                value="<?php echo $usuarios->usr_nombre ?>" required>
                                         </div>
                                         <div class="col form-group">
                                             <label for="apellidos">Apellidos:</label>
-                                            <input type="text" class="form-control" id="apellidos" name="apellidos" value="<?php echo $usuarios->usr_apellidos ?>" required>
+                                            <input type="text" class="form-control" id="apellidos" name="apellidos"
+                                                value="<?php echo $usuarios->usr_apellidos ?>" required>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -198,27 +225,32 @@
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <label for="documento">Documento:</label>
-                                            <input type="tel" class="form-control" id="documento" name="documento" value="<?php echo $usuarios->pk_id_usr ?>" required>
+                                            <input type="tel" class="form-control" id="documento" name="documento"
+                                                value="<?php echo $usuarios->pk_id_usr ?>" required>
                                         </div>
                                         <div class="colmd-2 form-group ">
                                             <label for="rh">Rh:</label>
-                                            <input type="text" class="form-control" id="rh" name="rh" value="<?php echo $usuarios->usr_rh ?>" required>
+                                            <input type="text" class="form-control" id="rh" name="rh"
+                                                value="<?php echo $usuarios->usr_rh ?>" required>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col form-group">
                                             <label for="correo">Correo electrónico:</label>
-                                            <input type="email" class="form-control" id="correo" name="correo" value="<?php echo $usuarios->usr_email ?>" required>
+                                            <input type="email" class="form-control" id="correo" name="correo"
+                                                value="<?php echo $usuarios->usr_email ?>" required>
                                         </div>
                                         <div class="col form-group">
                                             <label for="telefono">Teléfono:</label>
-                                            <input type="tel" class="form-control" id="telefono" name="telefono" value="<?php echo $usuarios->usr_telefono ?>" required>
+                                            <input type="tel" class="form-control" id="telefono" name="telefono"
+                                                value="<?php echo $usuarios->usr_telefono ?>" required>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col form-group">
                                             <label for="contrasena">Contraseña:</label>
-                                            <input type="password" class="form-control" id="contrasena" name="contrasena" value="<?php echo $usuarios->login_pass ?>" required>
+                                            <input type="password" class="form-control" id="contrasena" name="contrasena"
+                                                value="<?php echo $usuarios->login_pass ?>" required>
                                         </div>
                                         <div class="col form-group">
                                             <label for="contrasena">Confirmar Contraseña:</label>
@@ -249,12 +281,14 @@
                                         <div class="form-row">
                                             <div class="col form-group">
                                                 <label for="nombres">Nombres:</label>
-                                                <input type="text" class="form-control" id="nombres" name="nombres" value="<?php echo $usuarios->usr_nombre ?>" required>
+                                                <input type="text" class="form-control" id="nombres" name="nombres"
+                                                    value="<?php echo $usuarios->usr_nombre ?>" required>
                                             </div>
                                             <div class="col form-group">
                                                 <label for="apellidos">Apellidos:</label>
                                                 <input type="text" class="form-control" id="apellidos" name="apellidos"
-                                                    placeholder="Introduce tus apellidos" value="<?php echo $usuarios->usr_apellidos ?>" required>
+                                                    placeholder="Introduce tus apellidos" value="<?php echo $usuarios->usr_apellidos ?>"
+                                                    required>
                                             </div>
                                         </div>
                                         <div class="form-row">
@@ -275,33 +309,39 @@
                                             </div>
                                             <div class="col form-group">
                                                 <label for="documento">Documento:</label>
-                                                <input type="tel" class="form-control" id="documento" name="documento" value="<?php echo $usuarios->pk_id_usr ?>" required>
+                                                <input type="tel" class="form-control" id="documento" name="documento"
+                                                    value="<?php echo $usuarios->pk_id_usr ?>" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="col form-group ">
                                                 <label for="rh">Rh:</label>
-                                                <input type="text" class="form-control" id="rh" name="rh" value="<?php echo $usuarios->usr_rh ?>" required>
+                                                <input type="text" class="form-control" id="rh" name="rh"
+                                                    value="<?php echo $usuarios->usr_rh ?>" required>
                                             </div>
                                             <div class="col form-group">
                                                 <label for="cargo">Cargo:</label>
-                                                <input type="text" class="form-control" id="cargo" name="cargo" value="<?php echo $usuarios->usr_cargo ?>" required>
+                                                <input type="text" class="form-control" id="cargo" name="cargo"
+                                                    value="<?php echo $usuarios->usr_cargo ?>" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="col form-group">
                                                 <label for="correo">Correo electrónico:</label>
-                                                <input type="email" class="form-control" id="correo" name="correo" value="<?php echo $usuarios->usr_email ?>" required>
+                                                <input type="email" class="form-control" id="correo" name="correo"
+                                                    value="<?php echo $usuarios->usr_email ?>" required>
                                             </div>
                                             <div class="col form-group">
                                                 <label for="telefono">Teléfono:</label>
-                                                <input type="tel" class="form-control" id="telefono" name="telefono" value="<?php echo $usuarios->usr_telefono ?>" required>
+                                                <input type="tel" class="form-control" id="telefono" name="telefono"
+                                                    value="<?php echo $usuarios->usr_telefono ?>" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="col form-group">
                                                 <label for="contrasena">Contraseña:</label>
-                                                <input type="password" class="form-control" id="contrasena" name="contrasena" value="<?php echo $usuarios->login_pass ?>" required>
+                                                <input type="password" class="form-control" id="contrasena" name="contrasena"
+                                                    value="<?php echo $usuarios->login_pass ?>" required>
                                             </div>
                                             <div class="col form-group">
                                                 <label for="contrasena">Confirmar Contraseña:</label>

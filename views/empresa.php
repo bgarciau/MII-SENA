@@ -29,7 +29,7 @@
     <div style="min-height: 85vh;">
         <div class="container mt-4">
             <div class="row">
-                <div class="col-md-6 mx-auto">
+                <div class="col-md-4 mx-auto">
                     <!-- MUESTRA LOS DATOS BASICOS DE LA EMPRESA -->
                     <h2 class="text-center mb-4">DATOS DE EMPRESA</h2>
                     <?php
@@ -64,7 +64,7 @@
                     }
                     ?>
                 </div>
-                <div class="col-md-6 mx-auto">
+                <div class="col-md-8 mx-auto">
                     <!-- FILTROS PARA LA BUSQUEDA DE APRENDICES -->
                     <h4>FILTROS</h4>
                     <label class="form-label">Programa: </label>
@@ -80,6 +80,11 @@
                         }
                         ?>
                     </select>
+                    <label class="form-label">Etapa: </label>
+                    <select class="form-select" name="etapa" id="etapa">
+                        <option value="PRACTICA">PRACTICA</option>
+                        <option value="LECTIVA">LECTIVA</option>    
+                    </select>
                     <br>
                     <button onclick="buscarAprendices()" type="button" class="btn btn-success btn-block">BUSCAR
                         APRENDICES</button>
@@ -92,14 +97,14 @@
                                 <th>Aprendiz</th>
                                 <th>Correo</th>
                                 <th>Telefono</th>
-                                <th>HV</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             $i = 1;
                             $usuario = $_SESSION['usuario'];
-                            $idAprendices = $base->query("SELECT * FROM empresaaprendiz WHERE fk_id_empresa=$usuario;")->fetchAll(PDO::FETCH_OBJ);
+                            $idAprendices = $base->query("SELECT * FROM empresaaprendiz WHERE fk_id_empresa=$usuario and contratar='si'")->fetchAll(PDO::FETCH_OBJ);
                             foreach ($idAprendices as $idAprendiz) {
                                 $DatosAprendiz = $base->query("SELECT * FROM usuarios WHERE pk_id_usr=$idAprendiz->fk_id_aprendiz;")->fetchAll(PDO::FETCH_OBJ);
                                 foreach ($DatosAprendiz as $DatosA) {
@@ -114,6 +119,8 @@
                                         <a class="text-primary"
                                                 href="hojaVida.php?id=<?php echo $DatosA->pk_id_usr; ?>">
                                                 <i class="bi bi-file-earmark-text-fill">VER</i></a>
+                                                <a onclick="return confirm('Estas seguro de eliminar?');" class="text-danger"
+                                            href="../controller/eliminarEA.php?id=<?php echo $DatosA->pk_id_usr; ?>"><i class="bi bi-trash-fill">ELIMINAR</i></a>
                                     </td>
                                 </tr>
                                 <?php
@@ -135,7 +142,8 @@
     //BOTON PARA ENVIAR A LA EMPRESA A BUSCAR APRENDICES CON LOS FILTROS APLICADOS
     function buscarAprendices() {
         idPrograma = $('#programa').val()
-        location.href = "buscarAprendices.php?programa=" + idPrograma;
+        etapa = $('#etapa').val()
+        location.href = "buscarAprendices.php?programa=" + idPrograma+"&etapa="+etapa;
     }
 </script>
 

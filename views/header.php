@@ -63,8 +63,7 @@
         <!-- BOTON PARA SALIR DE LA APLICACION -->
         <div class="d-flex">
 
-          <a href="../controller/salir.php"><button class="btn btn-outline-danger" type="submit"><i class="bi bi-door-open">
-                SALIR</i></button></a>
+          <a href="../controller/salir.php"><button class="btn btn-danger" type="submit"><i class="bi bi-door-open">SALIR</i></button></a>
         </div>
       </div>
       <?php

@@ -13,10 +13,11 @@ if ($tipo == 1) {
     $direccion = $_POST['direccion'];
     $estrato = $_POST['estrato'];
     $ciudad = $_POST['ciudad'];
+    $hv="si";
 
-    $sql = "UPDATE usuarios SET usr_email=?,usr_fecha_nacimiento=? ,usr_telefono=?, usr_libreta_militar=?, usr_direccion=?, usr_estrato=?, usr_ciudad=? WHERE pk_id_usr=$usuario;";
+    $sql = "UPDATE usuarios SET usr_email=?,usr_fecha_nacimiento=? ,usr_telefono=?, usr_libreta_militar=?, usr_direccion=?, usr_estrato=?, usr_ciudad=?, usr_hv=? WHERE pk_id_usr=$usuario;";
     $stmt = $base->prepare($sql);
-    $stmt->execute([$correo, $fecha_nacimieno, $telefono, $libreta_militar, $direccion, $estrato, $ciudad]);
+    $stmt->execute([$correo, $fecha_nacimieno, $telefono, $libreta_militar, $direccion, $estrato, $ciudad,$hv]);
 
     // datos BACHILLER
     $titulo_obtenido = $_POST['titulo_obtenido'];
@@ -71,9 +72,16 @@ else if ($tipo == 3) {
 
     echo $contrata;
     try {
+        $idAprendices = $base->query("SELECT * FROM empresaaprendiz WHERE fk_id_aprendiz=$idAprendiz and fk_id_empresa=$idEmpresa;")->fetchAll(PDO::FETCH_OBJ);
+        $existe=0;
+        foreach ($idAprendices as $idAprendiz) {
+            $existe=1;
+        }
+        if($existe==0){
         $sql = "INSERT INTO empresaaprendiz (nom_funcionario,telefono,correo,observaciones,contratar,ciudad_diligenciamiento,fecha_diligenciamiento,fk_id_empresa,fk_id_aprendiz) VALUES (?,?,?,?,?,?,?,?,?)";
         $stmt = $base->prepare($sql);
         $stmt->execute([$nombreRecursos, $telefonoRecursos, $correoRecursos, $observacionesRecursos,$contrata, $ciudadDilegenciamiento, $fechaDiligenciamiento, $idEmpresa, $idAprendiz ]);
+        }
     } catch (Exception $e) {
         echo $e;
     }

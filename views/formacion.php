@@ -393,9 +393,21 @@
 <script>
     $(document).ready(function () {
         // APLIKCA EL ESTILO DE LA LIBRERIA DATATABLE 
-        $('#tablaFicha').DataTable();
-        $('#tablaPrograma').DataTable();
-        $('#tablaCentro').DataTable();
+        $('#tablaFicha').DataTable({
+    "language": {
+      "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+    }
+  });
+        $('#tablaPrograma').DataTable({
+    "language": {
+      "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+    }
+  });
+        $('#tablaCentro').DataTable({
+    "language": {
+      "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+    }
+  });
 
         // TOMAMOS LOS BOTONES Y LOS DIALOGS PARA AGREGAR FICHAS, PROGRAMAS Y CENTROS
         const btnAgregarFicha = document.getElementById('btnAgregarFicha');

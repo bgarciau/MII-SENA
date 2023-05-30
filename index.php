@@ -5,6 +5,7 @@
         <?php
         require_once("views/head.php");
         ?>
+         <link rel="icon" type="image/png" href="images/miifav.png" /> 
     </head>
     <style>
         body {
@@ -25,6 +26,7 @@
   <div class="container-fluid">
     <!-- <a class="navbar-brand" href="#">MII</a> -->
     <img src="images/mii.png" alt="" height="70px">
+    <img src="images/sena.png" alt="" height="70px">
     </div>
 </nav>
         <div style="min-height: 80vh;">
