@@ -22,7 +22,7 @@
     }
     ?>
     <div style="min-height: 85vh;">
-        <div class="container">
+        <div class="container bg-white py-4">
             <div>
                 <div class="p-1">
                     <div class="text-center">

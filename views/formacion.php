@@ -60,7 +60,14 @@
                                         <?php echo $datosFicha->ficha_etapa; ?>
                                     </td>
                                     <td>
-                                        <?php echo $datosFicha->fk_id_pro; ?>
+                                        <?php
+                                        $programa=$datosFicha->fk_id_pro;
+                                        $programas = $base->query("SELECT * FROM programas WHERE pk_id_pro=$programa")->fetchAll(PDO::FETCH_OBJ);
+                                        $i = 1;
+                                        foreach ($programas as $datosPrograma) {
+                                            echo $datosPrograma->pro_nombre;
+                                        }
+                                        ?>
                                     </td>
                                     <td>
                                         <a class="text-warning"
@@ -181,7 +188,14 @@
                                         <?php echo $datosPrograma->pro_ocupaciones; ?>
                                     </td>
                                     <td>
-                                        <?php echo $datosPrograma->fk_id_cefo; ?>
+                                        <?php
+                                        $centro=$datosPrograma->fk_id_cefo;
+                                        $centros = $base->query("SELECT * FROM centros_formacion WHERE pk_id_cefo=$centro")->fetchAll(PDO::FETCH_OBJ);
+                                        $i = 1;
+                                        foreach ($centros as $datosCentro) {
+                                            echo $datosCentro->cefo_nom_centro_formacion;
+                                        }
+                                        ?>
                                     </td>
                                     <td><a class="text-warning"
                                             href="editarFormacion.php?codigo=<?php echo $datosPrograma->pk_id_pro; ?>&tipo=programa"><i
@@ -230,15 +244,15 @@
                             <label class="form-label">Centro: </label>
                             <select class="form-select" aria-label="Default" name="centroPrograma" autofocus required>
                                 <option selected>Seleccione una opcion</option>
-                            <?php
-                            $centros = $base->query("SELECT * FROM centros_formacion")->fetchAll(PDO::FETCH_OBJ);
-                            $i = 1;
-                            foreach ($centros as $datosCentro) {
-                                ?>
-                                    <option value="<?php echo $datosCentro->pk_id_cefo; ?>"> <?php echo $datosCentro->cefo_nom_centro_formacion; ?></option>
                                 <?php
-                            }
-                            ?>
+                                $centros = $base->query("SELECT * FROM centros_formacion")->fetchAll(PDO::FETCH_OBJ);
+                                $i = 1;
+                                foreach ($centros as $datosCentro) {
+                                    ?>
+                                    <option value="<?php echo $datosCentro->pk_id_cefo; ?>"> <?php echo $datosCentro->cefo_nom_centro_formacion; ?></option>
+                                    <?php
+                                }
+                                ?>
                             </select>
                         </div>
                         <div class="row">
@@ -315,7 +329,7 @@
                                     <td><a class="text-warning"
                                             href="editarFormacion.php?codigo=<?php echo $datosCentro->pk_id_cefo; ?>&tipo=centro"><i
                                                 class="bi bi-pencil-square">EDITAR</i></a>
-                                            <br>
+                                        <br>
                                         <a onclick="return confirm('Estas seguro de eliminar?');" class="text-danger"
                                             href="../controller/crudFormacion.php?id=<?php echo $datosCentro->pk_id_cefo; ?>&accion=eliminar&tipo=centro"><i
                                                 class="bi bi-trash-fill">BORRAR</i></a>
@@ -394,20 +408,20 @@
     $(document).ready(function () {
         // APLIKCA EL ESTILO DE LA LIBRERIA DATATABLE 
         $('#tablaFicha').DataTable({
-    "language": {
-      "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-    }
-  });
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
+        });
         $('#tablaPrograma').DataTable({
-    "language": {
-      "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-    }
-  });
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
+        });
         $('#tablaCentro').DataTable({
-    "language": {
-      "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-    }
-  });
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
+        });
 
         // TOMAMOS LOS BOTONES Y LOS DIALOGS PARA AGREGAR FICHAS, PROGRAMAS Y CENTROS
         const btnAgregarFicha = document.getElementById('btnAgregarFicha');

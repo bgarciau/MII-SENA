@@ -27,8 +27,8 @@
         }
     }
     ?>
-    <div style="min-height: 85vh;">
-        <div class="container mt-3">
+    <div class="py-4" style="min-height: 85vh;">
+        <div class="container mt-3 bg-white py-4">
             <div class="row">
                 <div class="col-md-6">
                     <h2 class="text-center mb-4">DATOS DE APRENDIZ</h2>
@@ -183,5 +183,4 @@
     require_once("footer.php");
     ?>
 </body>
-
 </html>

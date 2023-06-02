@@ -128,7 +128,13 @@
                         <div class="mb-3">
                             <label class="form-label">Centro: </label>
                             <input type="text" class="form-control" name="centroPrograma"
-                                value="<?php echo $datosPrograma->fk_id_cefo ?>" autofocus required disabled>
+                                value="<?php 
+                                $idCentro=$datosPrograma->fk_id_cefo;
+                                $centro = $base->query("SELECT * FROM centros_formacion WHERE pk_id_cefo=$idCentro")->fetchAll(PDO::FETCH_OBJ);
+                                foreach ($centro as $datosCentro) {
+                                echo $datosCentro->cefo_nom_centro_formacion ;
+                                }
+                                ?>" autofocus required disabled>
                         </div>
                         <div class="row">
                             <div class="col d-flex justify-content-center">

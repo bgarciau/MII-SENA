@@ -89,7 +89,7 @@
                     <button onclick="buscarAprendices()" type="button" class="btn btn-success btn-block">BUSCAR
                         APRENDICES</button>
                     <br><br>
-                    <h3>APRENDICES SELECCCIONADOS</h3>
+                    <h3>APRENDICES SELECCIONADOS</h3>
                     <table id="tablaAprendices" class="table align-middle">
                         <thead>
                             <tr>

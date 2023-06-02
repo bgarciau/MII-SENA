@@ -30,7 +30,8 @@ if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
     $sql = "UPDATE usuarios SET foto='$ruta_archivo' WHERE pk_id_usr=$usuario";
     if (mysqli_query($conn, $sql)) {
         echo "Archivo guardado correctamente";
-        header('Location: ../views/aprendiz.php');
+        $url= $_SERVER["HTTP_REFERER"];
+        header('Location:'.$url.'');
     } else {
         echo "Error al guardar el archivo: " . mysqli_error($conn);
     }
