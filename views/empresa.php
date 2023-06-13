@@ -27,7 +27,7 @@
     }
     ?>
     <div style="min-height: 85vh;">
-        <div class="container mt-4">
+        <div class="container font-weight-bold mt-4">
             <div class="row">
                 <div class="col-md-4 mx-auto">
                     <!-- MUESTRA LOS DATOS BASICOS DE LA EMPRESA -->
@@ -43,7 +43,7 @@
                         </div>
                         <div class="form-group">
                             <label for="nit">NIT:</label>
-                            <input type="text" class="form-control" id="nit" name="nit"
+                            <input type="number" class="form-control" id="nit" name="nit"
                                 value="<?php echo $datos->pk_id_usr ?>" readonly>
                         </div>
                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
@@ -54,7 +54,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="telefono">Teléfono:</label>
-                                <input type="tel" class="form-control" id="telefono" name="telefono"
+                                <input type="numberber" class="form-control" id="telefono" name="telefono"
                                     value="<?php echo $datos->usr_telefono ?>" required>
                             </div>
                             <input type="submit" class="btn btn-success btn-block mt-2" name="guardarCambios"
@@ -90,8 +90,9 @@
                         APRENDICES</button>
                     <br><br>
                     <h3>APRENDICES SELECCIONADOS</h3>
-                    <table id="tablaAprendices" class="table align-middle">
-                        <thead>
+                    <div class="overflow-x-scroll">
+                    <table id="tablaAprendicesE" class="table table-bordered table-striped table-hover">
+                        <thead class="table-success">
                             <tr>
                                 <th>#</th>
                                 <th>Aprendiz</th>
@@ -116,10 +117,10 @@
                                     <td><?php echo $DatosA->usr_email ?></td>
                                     <td><?php echo $DatosA->usr_telefono ?></td>
                                     <td>
-                                        <a class="text-primary"
+                                        <a class="btn btn-info btn-sm"
                                                 href="hojaVida.php?id=<?php echo $DatosA->pk_id_usr; ?>">
                                                 <i class="bi bi-file-earmark-text-fill">VER</i></a>
-                                                <a onclick="return confirm('Estas seguro de eliminar?');" class="text-danger"
+                                                <a onclick="return confirm('Estas seguro de eliminar?');" class="btn btn-danger btn-sm"
                                             href="../controller/eliminarEA.php?id=<?php echo $DatosA->pk_id_usr; ?>"><i class="bi bi-trash-fill">ELIMINAR</i></a>
                                     </td>
                                 </tr>
@@ -130,6 +131,7 @@
                             ?>
                         </tbody>
                     </table>
+                    </div>
                 </div>
             </div>
         </div>

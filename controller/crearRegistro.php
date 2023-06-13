@@ -14,6 +14,7 @@ if ($tipoUsr == 1) {
     $correo = $_POST['correo'];
     $telefono = $_POST['telefono'];
     $contrasena = $_POST['contrasena'];
+    $pass_cifrado = password_hash($contrasena, PASSWORD_DEFAULT, array("cost" => 7)); //Encripta la clave 
     $ficha = $_POST['ficha'];
     $foto = "../fotos/defecto.jpg";
 
@@ -22,7 +23,7 @@ if ($tipoUsr == 1) {
         // crea el usuario
         $sql = "INSERT INTO usuarios (pk_id_usr, usr_nombre, usr_apellidos, usr_email,usr_rh, usr_telefono, login_pass,fk_id_tipo_doc, fk_id_tipo_usr,fk_id_ficha ,foto ) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         $stmt = $base->prepare($sql);
-        $stmt->execute([$documento, $nombres, $apellidos, $correo, $rh, $telefono, $contrasena, $tipoDocumento, $tipoUsr, $ficha, $foto]);
+        $stmt->execute([$documento, $nombres, $apellidos, $correo, $rh, $telefono, $pass_cifrado, $tipoDocumento, $tipoUsr, $ficha, $foto]);
 
         // crea los estudios del usuario
         $numero = 1;
@@ -47,6 +48,7 @@ else if ($tipoUsr == 2) {
     $correo = $_POST['correo'];
     $telefono = $_POST['telefono'];
     $contrasena = $_POST['contrasena'];
+    $pass_cifrado = password_hash($contrasena, PASSWORD_DEFAULT, array("cost" => 7)); //Encripta la clave 
     $foto = "../fotos/defecto.jpg";
 
     // Inserta en la base de datos un nuevo usuario
@@ -54,7 +56,7 @@ else if ($tipoUsr == 2) {
         // crea el usuario
         $sql = "INSERT INTO usuarios (pk_id_usr, usr_nombre, usr_apellidos, usr_email,usr_rh, usr_telefono, login_pass,fk_id_tipo_doc, fk_id_tipo_usr,usr_cargo ,foto ) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         $stmt = $base->prepare($sql);
-        $stmt->execute([$documento, $nombres, $apellidos, $correo, $rh, $telefono, $contrasena, $tipoDocumento, $tipoUsr, $cargo, $foto]);
+        $stmt->execute([$documento, $nombres, $apellidos, $correo, $rh, $telefono, $pass_cifrado, $tipoDocumento, $tipoUsr, $cargo, $foto]);
 
     } catch (Exception $e) {
         echo $e;
@@ -71,13 +73,14 @@ else if ($tipoUsr == 3) {
     $correo = $_POST['correo'];
     $telefono = $_POST['telefono'];
     $contrasena = $_POST['contrasena'];
+    $pass_cifrado = password_hash($contrasena, PASSWORD_DEFAULT, array("cost" => 7)); //Encripta la clave 
 
     // Inserta en la base de datos un nuevo usuario
     try {
         // crea el usuario
         $sql = "INSERT INTO usuarios (pk_id_usr,usr_empresa, usr_nombre, usr_apellidos, usr_email, usr_telefono, login_pass,fk_id_tipo_usr ) VALUES (?,?,?,?,?,?,?,?)";
         $stmt = $base->prepare($sql);
-        $stmt->execute([$nit,$nombreEmpresa, $nombres, $apellidos, $correo,  $telefono, $contrasena, $tipoUsr]);
+        $stmt->execute([$nit,$nombreEmpresa, $nombres, $apellidos, $correo,  $telefono, $pass_cifrado, $tipoUsr]);
 
     } catch (Exception $e) {
         echo $e;
@@ -95,6 +98,7 @@ else if ($tipoUsr == 4) {
     $correo = $_POST['correo'];
     $telefono = $_POST['telefono'];
     $contrasena = $_POST['contrasena'];
+    $pass_cifrado = password_hash($contrasena, PASSWORD_DEFAULT, array("cost" => 7)); //Encripta la clave 
     $foto = "../fotos/defecto.jpg";
 
     // Inserta en la base de datos un nuevo usuario
@@ -102,7 +106,7 @@ else if ($tipoUsr == 4) {
         // crea el usuario
         $sql = "INSERT INTO usuarios (pk_id_usr, usr_nombre, usr_apellidos, usr_email,usr_rh, usr_telefono, login_pass,fk_id_tipo_doc, fk_id_tipo_usr,foto ) VALUES (?,?,?,?,?,?,?,?,?,?)";
         $stmt = $base->prepare($sql);
-        $stmt->execute([$documento, $nombres, $apellidos, $correo, $rh, $telefono, $contrasena, $tipoDocumento, $tipoUsr, $foto]);
+        $stmt->execute([$documento, $nombres, $apellidos, $correo, $rh, $telefono, $pass_cifrado, $tipoDocumento, $tipoUsr, $foto]);
 
     } catch (Exception $e) {
         echo $e;

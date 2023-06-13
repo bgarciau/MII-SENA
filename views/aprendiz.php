@@ -28,7 +28,7 @@
     }
     ?>
     <div class="py-4" style="min-height: 85vh;">
-        <div class="container mt-3 bg-white py-4">
+        <div class="container font-weight-bold mt-3 bg-white py-4">
             <div class="row">
                 <div class="col-md-6">
                     <h2 class="text-center mb-4">DATOS DE APRENDIZ</h2>
@@ -39,7 +39,7 @@
                         <!-- Campo de ficha -->
                         <div class="form-group">
                             <label for="ficha">Codigo de Ficha:</label>
-                            <input type="text" class="form-control" id="ficha" name="ficha"
+                            <input type="nuumber" class="form-control" id="ficha" name="ficha"
                                 value="<?php echo $datos->fk_id_ficha ?>" readonly>
                         </div>
 
@@ -75,7 +75,7 @@
                             <!-- Campo de teléfono -->
                             <div class="form-group">
                                 <label for="telefono">Teléfono:</label>
-                                <input type="tel" class="form-control" id="telefono" name="telefono"
+                                <input type="number" class="form-control" id="telefono" name="telefono"
                                     value="<?php echo $datos->usr_telefono ?>">
                             </div>
                             <!-- Botón de guardar cambios -->
@@ -183,4 +183,14 @@
     require_once("footer.php");
     ?>
 </body>
+<script>
+    if ('<?php echo $_GET['hojaVida'] ?>' == 'si') {
+            Swal.fire({
+                title: 'Su hoja de vida se ha actualizado',
+                color: '#ffffff',
+                icon: 'success',
+                iconColor: 'green',
+            })
+        }
+</script>
 </html>

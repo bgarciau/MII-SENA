@@ -21,7 +21,7 @@
         <div class="container mt-4">
             <!-- SEGUN LA SELECCION DEL USUARIO EN FORMACION SE MUESTRA UN FORMULARIO PARA EDITAR -->
             <!-- EDITAR FICHA -->
-            <div class="card" id="editarFicha" hidden>
+            <div class="card font-weight-bold" id="editarFicha" hidden>
                 <div class="card-header">
                     EDITAR FICHA:
                 </div>
@@ -95,7 +95,7 @@
                 ?>
             </div>
             <!-- EDITAR PROGRAMA -->
-            <div class="card" id="editarPrograma" hidden>
+            <div class="card font-weight-bold" id="editarPrograma" hidden>
                 <div class="card-header">
                     INGRESAR PROGRAMA:
                 </div>
@@ -188,11 +188,11 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Telefono: </label>
-                            <input type="text" class="form-control" name="telefonoCentro" value="<?php echo $datosCentro->cefo_telefono; ?>" autofocus required>
+                            <input type="number" class="form-control" name="telefonoCentro" value="<?php echo $datosCentro->cefo_telefono; ?>" autofocus required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Email: </label>
-                            <input type="text" class="form-control" name="emailCentro" value="<?php echo $datosCentro->cefo_email; ?>" autofocus required>
+                            <input type="email" class="form-control" name="emailCentro" value="<?php echo $datosCentro->cefo_email; ?>" autofocus required>
                         </div>
                         <div class="row">
                             <div class="col d-flex justify-content-center">

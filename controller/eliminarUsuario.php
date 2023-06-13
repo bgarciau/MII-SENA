@@ -7,5 +7,6 @@ $id = $_GET['id'];
 $query = "DELETE FROM usuarios where pk_id_usr = ?;";
 $sentencia = $base->prepare($query);
 $resultado = $sentencia->execute([$id]);
+$url= $_SERVER["HTTP_REFERER"];
 
-header("location: javascript:history.back(-1);");
+header("location: $url");

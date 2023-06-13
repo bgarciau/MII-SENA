@@ -6,6 +6,7 @@
     require_once("head.php");
     ?>
     <link rel="stylesheet" href="carnet/estilos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -26,13 +27,15 @@
     <div style="min-height: 85vh;">
         <div class="container mt-2" style="padding-top:2rem">
             <div class="row">
-            <div class="col-md-2">
+                <div class="col-md-2">
                 </div>
                 <div class="col-md-4">
                     <div class="text-center">
                         <a href="../"><button type="botton" class="btn btn-danger mb-3 btn-block">SALIR</button></a>
+                        <!-- <button type="botton" class="btn btn-success mb-3 btn-block" id="descargarCarnet">DESCARGAR</button> -->
+                        <a class="btn btn-success mb-3 btn-block" id="a" href="">DESCARGAR</a>
                     </div>
-                    <div class="carnet-body">
+                    <div class="carnet-body" id="convert">
                         <?php
                         $usuario = $base->query("SELECT * FROM usuarios WHERE pk_id_usr=$id")->fetchAll(PDO::FETCH_OBJ);
                         foreach ($usuario as $datos) {
@@ -93,12 +96,16 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="result">
+                            
+                        </div>
+                        <br>
                         <?php
                         }
                         ?>
                 </div>
                 <div class="col-md-4 align-self-center">
-                        <img src="../carnetQr/<?php echo $id ?>.png" style="margin-left:2rem" alt="" width="300px">
+                    <img src="../carnetQr/<?php echo $id ?>.png" style="margin-left:2rem" alt="" width="300px">
                 </div>
             </div>
         </div>
@@ -107,5 +114,20 @@
     require_once("footer.php");
     ?>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.js" integrity="sha512-sn/GHTj+FCxK5wam7k9w4gPPm6zss4Zwl/X9wgrvGMFbnedR8lTUSLdsolDRBRzsX6N+YgG6OWyvn9qaFVXH9w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    // html2canvas(document.querySelector("#ssCarnet")).then(canvas => {
+    //     document.body.appendChild(canvas)
+    // });
+    const elm = document.querySelector("#convert");
+    html2canvas(elm).then(function(canvas){
+        document.querySelector(".result").append(canvas);
+        $('#convert').prop("hidden",true);
+        let a = document.querySelector("#a");
+        // let cvs =document.querySelector("canvas");
+        a.href =document.querySelector("canvas").toDataURL();
+        a.download="carnet.png";
+    });
+</script>
 
 </html>

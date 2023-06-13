@@ -53,18 +53,18 @@
                                         <div class="col-md-10">
                                             <div class="form-row">
                                                 <div class="col form-group">
-                                                    <label for="nombres">Nombres:</label>
+                                                    <label for="nombres" class="font-weight-bold">Nombres:</label>
                                                     <input type="text" class="form-control" id="nombres" name="nombres" value="<?php echo $datos->usr_nombre ?>" readonly>
                                                 </div>
                                                 <div class="col form-group">
-                                                    <label for="apellidos">Apellidos:</label>
+                                                    <label for="apellidos" class="font-weight-bold">Apellidos:</label>
                                                     <input type="text" class="form-control" id="apellidos" name="apellidos" value="<?php echo $datos->usr_apellidos ?>"
                                                         readonly>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="documento">Documento de identidad:</label>
-                                                <input type="text" class="form-control" id="documento" name="documento" value="<?php echo $datos->pk_id_usr ?>" readonly>
+                                                <label for="documento" class="font-weight-bold">Documento de identidad:</label>
+                                                <input type="number" class="form-control" id="documento" name="documento" value="<?php echo $datos->pk_id_usr ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="col">
@@ -73,23 +73,23 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col form-group">
-                                            <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+                                            <label for="fecha_nacimiento" class="font-weight-bold">Fecha de nacimiento:</label>
                                             <input type="date" class="form-control" id="fecha_nacimiento"
                                                 name="fecha_nacimiento" value="<?php if(isset($datos->usr_fecha_nacimiento)){echo $datos->usr_fecha_nacimiento;} ?>" max="<?php echo date('Y-m-d') ?>" required>
                                         </div>
                                         <div class="col form-group">
-                                            <label for="telefonos">Teléfonos:</label>
-                                            <input type="text" class="form-control" id="telefonos" name="telefonos" value="<?php if(isset($datos->usr_telefono)){echo $datos->usr_telefono;} ?>"
+                                            <label for="telefonos" class="font-weight-bold">Teléfonos:</label>
+                                            <input type="number" class="form-control" id="telefonos" name="telefonos" value="<?php if(isset($datos->usr_telefono)){echo $datos->usr_telefono;} ?>"
                                                 required>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="correo_misena">Correo electrónico Misena:</label>
+                                        <label for="correo_misena" class="font-weight-bold">Correo electrónico Misena:</label>
                                         <input type="email" class="form-control" id="correo_misena" name="correo_misena" value="<?php if(isset($datos->usr_email)){echo $datos->usr_email;} ?>"
                                             required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="libreta_militar">Libreta militar:</label>
+                                        <label for="libreta_militar" class="font-weight-bold">Libreta militar:</label>
                                         <select class="form-control" id="libreta_militar" name="libreta_militar" required>
                                             <option value="<?php if(isset($datos->usr_libreta_militar)){echo $datos->usr_libreta_militar;}?>" ><?php if(isset($datos->usr_libreta_militar)){echo $datos->usr_libreta_militar;}else{echo "Seleccione una opcion";} ?></option>
                                             <option value="SI">Sí</option>
@@ -97,21 +97,21 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="direccion">Direccion de domicilio:</label>
+                                        <label for="direccion" class="font-weight-bold">Direccion de domicilio:</label>
                                         <input type="text" class="form-control" id="direccion" name="direccion" value="<?php if(isset($datos->usr_direccion)){echo $datos->usr_direccion;} ?>" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="estrato">Estrato:</label>
-                                        <input type="text" class="form-control" id="estrato" name="estrato" value="<?php if(isset($datos->usr_estrato)){echo $datos->usr_estrato;} ?>" required>
+                                        <label for="estrato" class="font-weight-bold">Estrato:</label>
+                                        <input type="number" class="form-control" id="estrato" name="estrato" value="<?php if(isset($datos->usr_estrato)){echo $datos->usr_estrato;} ?>" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="ciudad">Ciudad:</label>
+                                        <label for="ciudad" class="font-weight-bold">Ciudad:</label>
                                         <input type="text" class="form-control" id="ciudad" name="ciudad" value="<?php if(isset($datos->usr_ciudad)){echo $datos->usr_ciudad;} ?>" required>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
+                        <div class="accordion-item font-weight-bold">
                             <h2 class="accordion-header">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true"
@@ -171,7 +171,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="nombre_estudios">Nombre de los estudios</label>
-                                        <input type="text" class="form-control" id="nombre_estudios" name="nombre_estudios" value="<?php if(isset($estudio2->estudio_titulo)){echo $estudio->estudio_titulo;} ?>">
+                                        <input type="text" class="form-control" id="nombre_estudios" name="nombre_estudios" value="<?php if(isset($estudio2->estudio_titulo)){echo $estudio2->estudio_titulo;} ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="institucion_educativa">Institución educativa</label>
@@ -190,7 +190,7 @@
                                             ?>
                                             <label for="nivel">Nivel</label>
                                         <select class="form-control" id="nivel" name="nivel">
-                                            <option selected>Seleccione una opción</option>
+                                            <option value="">Seleccione una opción</option>
                                             <option value="Tecnico">Tecnico</option>
                                             <option value="Tecnologo">Tecnologo</option>
                                             <option value="Especializacion Tecnologica">Especializacion Tecnologica</option>
@@ -220,7 +220,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
+                        <div class="accordion-item font-weight-bold">
                             <h2 class="accordion-header">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="true"
@@ -315,7 +315,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
+                        <div class="accordion-item font-weight-bold">
                             <h2 class="accordion-header">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="true"
@@ -348,7 +348,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
+                        <div class="accordion-item font-weight-bold">
                             <h2 class="accordion-header">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="true"
@@ -367,7 +367,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="telefono">Teléfono:</label>
-                                        <input type="text" class="form-control" id="telefonoFuncionario"
+                                        <input type="number" class="form-control" id="telefonoFuncionario"
                                             placeholder="Ingrese el número de teléfono" name="telefonoFuncionario">
                                     </div>
                                     <div class="form-group">
@@ -378,7 +378,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
+                        <div class="accordion-item font-weight-bold">
                             <h2 class="accordion-header">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="true"
@@ -390,7 +390,7 @@
                                 <div class="accordion-body">
                                     <div class="form-group">
                                         <label for="nit">NIT:</label>
-                                        <input type="text" class="form-control" id="nitCentro"
+                                        <input type="number" class="form-control" id="nitCentro"
                                             placeholder="Ingrese el NIT del centro de formación" name="nitCentro">
                                     </div>
                                     <div class="form-group">
@@ -410,13 +410,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="telefono">Teléfono:</label>
-                                        <input type="text" class="form-control" id="telefonoCentro"
+                                        <input type="number" class="form-control" id="telefonoCentro"
                                             placeholder="Ingrese el número de teléfono" name="telefonoCentro">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
+                        <div class="accordion-item font-weight-bold">
                             <h2 class="accordion-header">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="true"
@@ -441,7 +441,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="telefono">Teléfono:</label>
-                                        <input type="text" class="form-control" id="telefonoRecursos"
+                                        <input type="number" class="form-control" id="telefonoRecursos"
                                         value="<?php echo $datosEmpresa->telefono ?>" name="telefonoRecursos">
                                     </div>
                                     <div class="form-group">
@@ -490,7 +490,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="telefono">Teléfono:</label>
-                                        <input type="text" class="form-control" id="telefonoRecursos" name="telefonoRecursos">
+                                        <input type="number" class="form-control" id="telefonoRecursos" name="telefonoRecursos">
                                     </div>
                                     <div class="form-group">
                                         <label for="correo">Correo Electrónico:</label>

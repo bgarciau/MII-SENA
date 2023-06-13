@@ -44,7 +44,7 @@ if ($tipo == 1) {
     } catch (Exception $e) {
         echo $e;
     }
-    header("location: ../views/aprendiz.php");
+    header("location: ../views/aprendiz.php?hojaVida=si");
     echo "todo correcto";
 }
 // LO QUE HACE EL FUNCIONARIO

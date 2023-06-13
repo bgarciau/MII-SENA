@@ -96,7 +96,7 @@ foreach ($usuario as $datos) {
     $pdf->SetTextColor(0, 0, 0);
     $pdf->Ln();
     $pdf->SetFont('Arial', '', 8);
-    $pdf->Write(5, ' Digite la información referente al título obtenido en el grado 11 que corresponde a la educación media.');
+    $pdf->Write(5, ' Digite la informacion referente al titulo obtenido en el grado 11 que corresponde a la educacion media.');
     $pdf->Ln();
     $estudios = $base->query("SELECT * FROM estudio WHERE fk_id_usr=$id and numero=1")->fetchAll(PDO::FETCH_OBJ);
     foreach ($estudios as $estudio) {
@@ -295,7 +295,7 @@ foreach ($usuario as $datos) {
     $pdf->Write(2, 'OBSERVACIONES');
     $pdf->Ln(65);
     $pdf->SetFont('Arial', '', 8);
-    $pdf->Write(2, 'Marque con una x la decisiOn de contratar al aprendiz. Seleccionado: _____ No Seleccionado: ____ ');
+    $pdf->Write(2, 'Marque con una x la decision de contratar al aprendiz. Seleccionado: _____ No Seleccionado: ____ ');
     $pdf->Ln(10);
     $pdf->SetFont('Arial', '', 10);
     $pdf->Write(2, 'Ciudad y Fecha de Diligenciamiento: _____________________________FIRMA: _______________________________');

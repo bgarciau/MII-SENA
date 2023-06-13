@@ -29,7 +29,7 @@ if (isset($_GET['accion']) && $_GET['accion'] != "") {
             $nombrePrograma = $_POST["nombrePrograma"];
             $perfilPrograma = $_POST["perfilPrograma"];
             $ocupacionesPrograma = $_POST["ocupacionesPrograma"];
-            $centroPrograma = $_POST["centroPrograma"];
+            $centroPrograma = 1;
             try {
                 $query = "INSERT INTO programas(pk_id_pro,pro_nombre,pro_perfil,pro_ocupaciones,fk_id_cefo) VALUES (?,?,?,?,?);";
                 $sentencia = $base->prepare($query);

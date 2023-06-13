@@ -12,6 +12,11 @@
     session_start();
     require_once("header.php");
     include('../controller/conexion.php');
+
+    $mensaje="no";
+    if (isset($_GET["mensaje"])) {
+        $mensaje = $_GET["mensaje"];
+    }
     ?>
     <div style="min-height: 85vh;">
         <div class="container">
@@ -23,75 +28,77 @@
                         <button type="submit" class="btn btn-success mb-3" id="btnAgregarFicha"><i
                                 class="bi bi-plus-square-dotted"></i></button>
                     </div>
-                    <table id="tablaFicha" class="table align-middle">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">ID</th>
-                                <th scope="col">Fecha Inicio</th>
-                                <th scope="col">Fecha Terminacion</th>
-                                <th scope="col">Etapa</th>
-                                <th scope="col">Programa</th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <?php
-                            $fichas = $base->query("SELECT * FROM fichas")->fetchAll(PDO::FETCH_OBJ);
-                            $i = 1;
-                            foreach ($fichas as $datosFicha) {
-                                ?>
-
+                    <div class="overflow-x-scroll">
+                        <table id="tablaFicha" class="table table-bordered table-striped table-hover">
+                            <thead class="table-success">
                                 <tr>
-                                    <td scope="row">
-                                        <?php echo $i; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $datosFicha->pk_id_ficha; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $datosFicha->ficha_fecha_inicio; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $datosFicha->ficha_fecha_terminacion; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $datosFicha->ficha_etapa; ?>
-                                    </td>
-                                    <td>
-                                        <?php
-                                        $programa=$datosFicha->fk_id_pro;
-                                        $programas = $base->query("SELECT * FROM programas WHERE pk_id_pro=$programa")->fetchAll(PDO::FETCH_OBJ);
-                                        $i = 1;
-                                        foreach ($programas as $datosPrograma) {
-                                            echo $datosPrograma->pro_nombre;
-                                        }
-                                        ?>
-                                    </td>
-                                    <td>
-                                        <a class="text-warning"
-                                            href="editarFormacion.php?codigo=<?php echo $datosFicha->pk_id_ficha; ?>&tipo=ficha"><i
-                                                class="bi bi-pencil-square">EDITAR</i></a>
-                                        <a onclick="return confirm('Estas seguro de eliminar?');" class="text-danger"
-                                            href="../controller/crudFormacion.php?id=<?php echo $datosFicha->pk_id_ficha; ?>&accion=eliminar&tipo=ficha"><i
-                                                class="bi bi-trash-fill">BORRAR</i></a>
-                                    </td>
+                                    <th scope="col">#</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Fecha Inicio</th>
+                                    <th scope="col">Fecha Terminacion</th>
+                                    <th scope="col">Etapa</th>
+                                    <th scope="col">Programa</th>
+                                    <th scope="col"></th>
                                 </tr>
+                            </thead>
+                            <tbody>
 
                                 <?php
-                                $i++;
-                            }
-                            ?>
+                                $fichas = $base->query("SELECT * FROM fichas")->fetchAll(PDO::FETCH_OBJ);
+                                $i = 1;
+                                foreach ($fichas as $datosFicha) {
+                                    ?>
 
-                        </tbody>
-                    </table>
+                                    <tr>
+                                        <td scope="row">
+                                            <?php echo $i; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $datosFicha->pk_id_ficha; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $datosFicha->ficha_fecha_inicio; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $datosFicha->ficha_fecha_terminacion; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $datosFicha->ficha_etapa; ?>
+                                        </td>
+                                        <td>
+                                            <?php
+                                            $programa = $datosFicha->fk_id_pro;
+                                            $programas = $base->query("SELECT * FROM programas WHERE pk_id_pro=$programa")->fetchAll(PDO::FETCH_OBJ);
+                                            $i = 1;
+                                            foreach ($programas as $datosPrograma) {
+                                                echo $datosPrograma->pro_nombre;
+                                            }
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-warning btn-sm"
+                                                href="editarFormacion.php?codigo=<?php echo $datosFicha->pk_id_ficha; ?>&tipo=ficha"><i
+                                                    class="bi bi-pencil-square">EDITAR</i></a>
+                                            <a onclick="return confirm('Estas seguro de eliminar?');"
+                                                class="btn btn-danger btn-sm"
+                                                href="../controller/crudFormacion.php?id=<?php echo $datosFicha->pk_id_ficha; ?>&accion=eliminar&tipo=ficha"><i
+                                                    class="bi bi-trash-fill">BORRAR</i></a>
+                                        </td>
+                                    </tr>
 
+                                    <?php
+                                    $i++;
+                                }
+                                ?>
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <!-- DIALOG PARA AGREGAR FICHA -->
-            <dialog id="dialogAgregarFicha" style="width: 50%;">
-                <div class="card">
+            <dialog id="dialogAgregarFicha" style="min-width: 50%;">
+                <div class="card font-weight-bold">
                     <div class="card-header">
                         INGRESAR FICHA:
                     </div>
@@ -151,74 +158,79 @@
                         <button type="submit" class="btn btn-success mb-3" id="btnAgregarPrograma"><i
                                 class="bi bi-plus-square-dotted"></i></button>
                     </div>
-                    <table id="tablaPrograma" class="table align-middle">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">ID</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Perfil</th>
-                                <th scope="col">Ocupaciones</th>
-                                <th scope="col">Centro</th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <?php
-                            $programas = $base->query("SELECT * FROM programas")->fetchAll(PDO::FETCH_OBJ);
-                            $i = 1;
-                            foreach ($programas as $datosPrograma) {
-                                ?>
-
+                    <div class="overflow-x-scroll">
+                        <table id="tablaPrograma" class="table table-bordered table-striped table-hover">
+                            <thead class="table-success">
                                 <tr>
-                                    <td scope="row">
-                                        <?php echo $i; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $datosPrograma->pk_id_pro; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $datosPrograma->pro_nombre; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $datosPrograma->pro_perfil; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $datosPrograma->pro_ocupaciones; ?>
-                                    </td>
-                                    <td>
-                                        <?php
-                                        $centro=$datosPrograma->fk_id_cefo;
-                                        $centros = $base->query("SELECT * FROM centros_formacion WHERE pk_id_cefo=$centro")->fetchAll(PDO::FETCH_OBJ);
-                                        $i = 1;
-                                        foreach ($centros as $datosCentro) {
-                                            echo $datosCentro->cefo_nom_centro_formacion;
-                                        }
-                                        ?>
-                                    </td>
-                                    <td><a class="text-warning"
-                                            href="editarFormacion.php?codigo=<?php echo $datosPrograma->pk_id_pro; ?>&tipo=programa"><i
-                                                class="bi bi-pencil-square">EDITAR</i></a>
-                                        <a onclick="return confirm('Estas seguro de eliminar?');" class="text-danger"
-                                            href="../controller/crudFormacion.php?id=<?php echo $datosPrograma->pk_id_pro; ?>&accion=eliminar&tipo=programa"><i
-                                                class="bi bi-trash-fill">BORRAR</i></a>
-                                    </td>
+                                    <th scope="col">#</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Perfil</th>
+                                    <th scope="col">Ocupaciones</th>
+                                    <th scope="col">Centro</th>
+                                    <th scope="col"></th>
                                 </tr>
+                            </thead>
+                            <tbody>
 
                                 <?php
-                                $i++;
-                            }
-                            ?>
+                                $programas = $base->query("SELECT * FROM programas")->fetchAll(PDO::FETCH_OBJ);
+                                $i = 1;
+                                foreach ($programas as $datosPrograma) {
+                                    ?>
 
-                        </tbody>
-                    </table>
+                                    <tr>
+                                        <td scope="row">
+                                            <?php echo $i; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $datosPrograma->pk_id_pro; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $datosPrograma->pro_nombre; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $datosPrograma->pro_perfil; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $datosPrograma->pro_ocupaciones; ?>
+                                        </td>
+                                        <td>
+                                            <?php
+                                            $centro = $datosPrograma->fk_id_cefo;
+                                            $centros = $base->query("SELECT * FROM centros_formacion WHERE pk_id_cefo=$centro")->fetchAll(PDO::FETCH_OBJ);
+                                            $i = 1;
+                                            foreach ($centros as $datosCentro) {
+                                                echo $datosCentro->cefo_nom_centro_formacion;
+                                            }
+                                            ?>
+                                        </td>
+                                        <td><a class="btn btn-warning btn-sm"
+                                                href="editarFormacion.php?codigo=<?php echo $datosPrograma->pk_id_pro; ?>&tipo=programa"><i
+                                                    class="bi bi-pencil-square">EDITAR</i></a>
+                                            <a onclick="return confirm('Estas seguro de eliminar?');"
+                                                class="btn btn-danger btn-sm"
+                                                href="../controller/crudFormacion.php?id=<?php echo $datosPrograma->pk_id_pro; ?>&accion=eliminar&tipo=programa"><i
+                                                    class="bi bi-trash-fill">BORRAR</i></a>
+                                        </td>
+                                    </tr>
 
+                                    <?php
+                                    $i++;
+                                }
+                                ?>
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+             <!-- BOTON PARA VOLVER -->
+             <a href="javascript:history.back(-1);"><button class="btn btn-danger me-md-2"
+                    type="button">VOLVER</button></a>
             <!-- DIALOG PARA AGREGAR PROGRAMA -->
-            <dialog id="dialogAgregarPrograma" style="width: 50%;">
-                <div class="card">
+            <dialog id="dialogAgregarPrograma" style="min-width: 50%;">
+                <div class="card font-weight-bold">
                     <div class="card-header">
                         INGRESAR PROGRAMA:
                     </div>
@@ -240,9 +252,9 @@
                             <label class="form-label">Ocupaciones: </label>
                             <input type="text" class="form-control" name="ocupacionesPrograma" autofocus required>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" hidden>
                             <label class="form-label">Centro: </label>
-                            <select class="form-select" aria-label="Default" name="centroPrograma" autofocus required>
+                            <select class="form-select" aria-label="Default" name="centroPrograma">
                                 <option selected>Seleccione una opcion</option>
                                 <?php
                                 $centros = $base->query("SELECT * FROM centros_formacion")->fetchAll(PDO::FETCH_OBJ);
@@ -266,9 +278,10 @@
                         </div>
                     </form>
                 </div>
+
             </dialog>
             <!--FILA PARA CENTRO DE FORMACION  -->
-            <div class="">
+            <div class="" hidden>
                 <div class="p-4">
                     <div class="text-center">
                         <h2>CENTRO FORMACION</h2>
@@ -347,7 +360,7 @@
                 </div>
             </div>
             <!-- DIALOG PARA AGREGAR CENTRO DE FORMACION -->
-            <dialog id="dialogAgregarCentro" style="width: 50%;">
+            <dialog id="dialogAgregarCentro" style="min-width: 50%;">
                 <div class="card">
                     <div class="card-header">
                         INGRESAR CENTRO:
@@ -405,6 +418,14 @@
     ?>
 </body>
 <script>
+    if('<?php echo $mensaje ?>' == 'error'){
+        Swal.fire({
+                title: 'Error al eliminar el Programa, no se puede eliminar ya que hay fichas que pertenecen a este',
+                color: '#ffffff',
+                icon: 'error',
+                iconColor: 'red',
+            })
+    }
     $(document).ready(function () {
         // APLIKCA EL ESTILO DE LA LIBRERIA DATATABLE 
         $('#tablaFicha').DataTable({

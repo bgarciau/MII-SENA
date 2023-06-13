@@ -1,0 +1,74 @@
+.container{
+    min-width: 95%;
+}
+
+#tablaAprendices{
+    min-width: max-content;
+    border-color: black;
+}
+
+#tablaAprendices td{
+    min-width: max-content;
+    padding: 1px;
+}
+
+#tablaAprendicesE{
+    min-width: max-content;
+    border-color: black;
+}
+
+#tablaAprendicesE td{
+    min-width: max-content;
+    padding: 1px;
+}
+
+#tablaEmpresas{
+    min-width: max-content;
+    border-color: black;
+}
+
+#tablaEmpresas td{
+    min-width: max-content;
+    padding: 1px;
+}
+
+
+#tablaFuncionario{
+    min-width: max-content;
+    border-color: black;
+}
+
+#tablaFuncionario td{
+    min-width: max-content;
+    padding: 1px;
+}
+
+#tablaInstructor{
+    min-width: max-content;
+    border-color: black;
+}
+
+#tablaInstructor td{
+    min-width: max-content;
+    padding: 1px;
+}
+
+#tablaFicha{
+    min-width: max-content;
+    border-color: black;
+}
+
+#tablaFicha td{
+    min-width: max-content;
+    padding: 1px;
+}
+
+#tablaPrograma{
+    min-width: max-content;
+    border-color: black;
+}
+
+#tablaPrograma td{
+    min-width: max-content;
+    padding: 1px;
+}

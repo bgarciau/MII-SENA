@@ -14,10 +14,11 @@
     include('../controller/conexion.php');
     ?>
     <div style="min-height: 85vh;">
-        <div class="container" style="padding-bottom: 2rem;">
+        <div class="container font-weight-bold" style="padding-bottom: 2rem;">
             <br>
             <h2>REGISTRO INSTRUCTOR</h2>
             <form action="../controller/crearRegistro.php" method="post">
+            <button type="submit" disabled hidden aria-hidden="true"></button>
             <input type="text" class="form-control" id="tipoUsr" name="tipoUsr" value=4 hidden>
                 <div class="form-row">
                     <div class="col form-group">
@@ -49,7 +50,7 @@
                     </div>
                     <div class="col-md-4 form-group">
                         <label for="documento">Documento:</label>
-                        <input type="tel" class="form-control" id="documento"
+                        <input type="number" class="form-control" id="documento"
                             placeholder="Introduce tu número de documento" name="documento" required>
                     </div>
                     <div class="colmd-2 form-group ">
@@ -74,7 +75,7 @@
                     </div>
                     <div class="col form-group">
                         <label for="telefono">Teléfono:</label>
-                        <input type="tel" class="form-control" id="telefono"
+                        <input type="numberber" class="form-control" id="telefono"
                             placeholder="Introduce tu número de teléfono" name="telefono" required>
                     </div>
                 </div>
@@ -83,6 +84,16 @@
                         <label for="contrasena">Contraseña:</label>
                         <input type="password" class="form-control" id="contrasena"
                             placeholder="Introduce tu contraseña" name="contrasena" required>
+                            <h6 id="mensajeLetra" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos una minuscula<i
+                                class="bi bi-x-octagon-fill"></i></h6>
+                        <h6 id="mensajeMayuscula" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos una
+                            MAYUSCULA<i class="bi bi-x-octagon-fill"></i></h6>
+                        <h6 id="mensajeNumero" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos un
+                            numero<i class="bi bi-x-octagon-fill"></i></h6>
+                        <h6 id="mensajeCaracteres" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos 7
+                            caracteres<i class="bi bi-x-octagon-fill"></i></h6>
+                        <h6 id="mensajeCohinciden" style="color:red"><i class="bi bi-x-octagon-fill"></i>Las contraseñas
+                            deben coincidir<i class="bi bi-x-octagon-fill"></i></h6>
                     </div>
                     <div class="col form-group">
                         <label for="contrasena">Confirmar Contraseña:</label>
@@ -112,10 +123,49 @@
         if ($('#nombres').val() == '' || $('#apellidos').val() == '' || $('#documento').val() == '' || $('#correo').val() == '' || $('#rh').val() == '' || $('#telefono').val() == '' || $('#tipoDocumento').val() == '' ) {
             $('#mensajeCampos').prop("hidden", false);
         } else {
+            enviar = 'no';
             if (clave1 == clave2 && clave1 != "") {
-                $('#btnEnviar').click()
+                $("#mensajeCohinciden").css("color", "green");
+                enviar = 'si';
+                // Longitud de la contraseña
+                if (clave1.length <= 6) {
+                    $("#mensajeCaracteres").css("color", "red");
+                    enviar = 'no';
+                }
+                else {
+                    $("#mensajeCaracteres").css("color", "green");
+                }
+                // Que conenga una letra la contraseña
+                if (clave1.match(/[a-z]/)) {
+                    $("#mensajeLetra").css("color", "green");
+                }
+                else {
+                    $("#mensajeLetra").css("color", "red");
+                    enviar = 'no';
+                }
+
+                //validar letra mayúscula
+                if (clave1.match(/[A-Z]/)) {
+                    $("#mensajeMayuscula").css("color", "green");
+                } else {
+                    $("#mensajeMayuscula").css("color", "red");
+                    enviar = 'no';
+                }
+
+                //validar numero
+                if (clave1.match(/\d/)) {
+                    $("#mensajeNumero").css("color", "green");
+                } else {
+                    $("#mensajeNumero").css("color", "red");
+                    enviar = 'no';
+                }
+
+                if (enviar == 'si') {
+                    $('#btnEnviar').click()
+                }
+
             } else {
-                alert('Las contraseas no coinciden')
+                $("#mensajeCohinciden").css("color", "red");
             }
         }
 

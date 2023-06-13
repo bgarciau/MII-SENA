@@ -27,7 +27,7 @@
     }
     ?>
     <div style="min-height: 85vh;">
-        <div class="container mt-3">
+        <div class="container font-weight-bold mt-3">
             <div class="row">
                 <div class="col-md-6">
                     <!-- Crear el formulario -->
@@ -54,7 +54,7 @@
                         <!-- Campo de documento -->
                         <div class="form-group">
                             <label for="documento">Documento:</label>
-                            <input type="text" class="form-control" id="documento" name="documento"
+                            <input type="number" class="form-control" id="documento" name="documento"
                                 value="<?php echo $datos->pk_id_usr ?>" readonly>
                         </div>
                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
@@ -68,7 +68,7 @@
                             <!-- Campo de teléfono -->
                             <div class="form-group">
                                 <label for="telefono">Teléfono:</label>
-                                <input type="tel" class="form-control" id="telefono" name="telefono"
+                                <input type="numberber" class="form-control" id="telefono" name="telefono"
                                     value="<?php echo $datos->usr_telefono ?>">
                             </div>
                             <!-- Botón de enviar -->
@@ -174,7 +174,7 @@
                 </div>
             </div>
         </div>
-
+        <br><br>
     </div>
     <?php
     require_once("footer.php");

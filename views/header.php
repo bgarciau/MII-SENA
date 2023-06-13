@@ -63,7 +63,7 @@
         <!-- BOTON PARA SALIR DE LA APLICACION -->
         <div class="d-flex">
 
-          <a href="../controller/salir.php"><button class="btn btn-danger" type="submit"><i class="bi bi-door-open">SALIR</i></button></a>
+          <button class="btn btn-danger" type="button" onclick="cerrar_sesion()"><i class="bi bi-door-open">SALIR</i></button>
         </div>
       </div>
       <?php
@@ -74,3 +74,19 @@
 
   </div>
 </nav>
+<script>
+  function cerrar_sesion() {
+    Swal.fire({
+      title: '¿Esta seguro que quiere cerrar sesion?',
+      color: '#ffffff',
+      icon: 'question',
+      iconColor: 'red',
+      showCancelButton: true,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        window.location = "../controller/salir.php";
+      }
+    })
+  }
+</script>
