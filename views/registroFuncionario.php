@@ -113,7 +113,7 @@
                 <div class="d-grid gap-2 d-md-flex justify-content-md-center">
                     <button type="button" class="btn btn-success" onclick="confirmarContraseña()">Enviar</button>
                     <button type="submit" class="btn btn-success" id="btnEnviar" hidden>Enviar</button>
-                    <a href="javascript:history.back(-1);"><button type="button" class="btn btn-danger">Regresar</button></a>
+                    <a href="javascript:history.back(-1);"><button type="button" class="btn btn-danger">REGRESAR</button></a>
                 </div>
             </form>
         </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 13-06-2023 a las 16:54:01
+-- Tiempo de generación: 15-06-2023 a las 21:59:43
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.2.0
 
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `estudio` (
   `fk_id_usr` bigint NOT NULL,
   PRIMARY KEY (`pk_id_estudio`),
   KEY `fk_Estudio_Usuarios1` (`fk_id_usr`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `estudio`
@@ -98,7 +98,8 @@ INSERT INTO `estudio` (`pk_id_estudio`, `numero`, `estudio_titulo`, `estudio_ins
 (43, 1, 'BACHILLER', 'coelgio12 1', '2023-06-07', NULL, 'BACHILLER', 1010028095),
 (44, 2, 'ADSI', 'SENA', NULL, 8, 'Tecnologo', 1010028095),
 (53, 1, NULL, NULL, NULL, NULL, 'BACHILLER', 12340),
-(54, 1, NULL, NULL, NULL, NULL, 'BACHILLER', 1231);
+(54, 1, NULL, NULL, NULL, NULL, 'BACHILLER', 1231),
+(55, 1, NULL, NULL, NULL, NULL, 'BACHILLER', 5678);
 
 -- --------------------------------------------------------
 
@@ -233,12 +234,13 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`pk_id_usr`, `usr_nombre`, `usr_empresa`, `usr_apellidos`, `usr_telefono`, `usr_email`, `usr_rh`, `usr_direccion`, `usr_estrato`, `usr_ciudad`, `usr_hv`, `usr_contacto`, `usr_cargo`, `usr_fecha_nacimiento`, `usr_libreta_militar`, `fk_id_ficha`, `fk_id_tipo_doc`, `fk_id_tipo_usr`, `login_pass`, `foto`) VALUES
-(1231, 'daniel', NULL, 'rodriguez', 3187289201, 'daniel@pimienta.com', 'B+', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2342583, 3, 1, '$2y$07$NLbMfz59UIX1ClPnHtlEzuSyIlDOpmvfss4zqFkSR0d0frGMZKnJm', '../fotos/defecto.jpg'),
+(1231, 'daniel', NULL, 'rodriguez', 3187289202, 'brayangarciausedaxd@gmail.com', 'B+', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2342583, 3, 1, '$2y$07$2iJrDpv54ChZElYPpDwrne9yRddY2Et6vKPZPISz/DccAN8CVx0qS', '../fotos/foto 2.jpg'),
+(5678, 'cristian', NULL, 'cruz', 3145262762, 'cristian10100@outlook.com', 'A+', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2342583, 1, 1, '$2y$07$W8rPVglktzVSC6HKgzPz..QgfjsQKCAhxbemaiD1//yTziZ8nZ3B2', '../fotos/defecto.jpg'),
 (12340, 'cristian', NULL, 'cruz', 31452678291, 'cristian@cruz.com', 'O-', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2342583, 1, 1, '$2y$07$Abu1SXoipVwEHObmLhfw7erKwH5Japz1Fy/dMHnQvFQIlBelWa4f2', '../fotos/defecto.jpg'),
-(75012345, 'Jesus David', NULL, 'Agudelo LinuX s', 3147827364, 'jesus@sena.com', 'A+', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 4, '$2y$07$Up5bHSQgsXfxc5LGqwVbA.BjX60r0OQ0phubqiEb5oN8JbVX9vVim', '../fotos/defecto.jpg'),
-(1002636273, 'Brayan', NULL, 'Garcia Useda', 3148928566, 'brayan@gmail.com', 'O+', NULL, NULL, NULL, NULL, NULL, 'funcionario', NULL, NULL, NULL, 1, 2, '$2y$07$p1wwwO1gQBy2Hqks52oFJ.XIenOcvmE1XRfLkhFWNPVOsQ1sRmt5S', '../fotos/defecto.jpg'),
+(75012345, 'Jesus David', NULL, 'Agudelo LinuX s', 3147827364, 'jesus@sena.com', 'A+', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 4, '$2y$07$6TXhm3bkN3f3fLuKY4UOhuSl7tkhvVzXFYl6s6aQuAmuJcFTiSR5a', '../fotos/defecto.jpg'),
+(1002636273, 'Brayan', NULL, 'Garcia Useda', 3148928566, 'brayang0430@gmail.com', 'O+', NULL, NULL, NULL, NULL, NULL, 'funcionario', NULL, NULL, NULL, 1, 2, '$2y$07$xNJIvDRrnH6JjcXhw1XGLekqnq3GYWHHWppxG6gOGWBUd1zcl4cTy', '../fotos/defecto.jpg'),
 (1010028095, 'cristian', NULL, 'cruz', 31426255627, 'cristian@cruz.com', 'A+', 'calle pimienta nº 13-13', 3, 'manizales', 'si', NULL, NULL, '2023-05-31', 'NO', 2342583, 1, 1, '$2y$07$JHvfrBLU3wi7NppA.Ws79OdPDCVKaGTVwrSM9V58r3TVQfnGCaziq', '../fotos/chu.jpg'),
-(8908009994, 'David ', 'Prometalicos', 'Ramireez', 3123453454, 'david@pro.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 3, '$2y$07$nTLpGTEWaxuFlBDWc5RYhe8o/Iy41v.dj/Q8yj6071w1d19tMep8C', '');
+(8908009994, 'David ', 'Prometalicos', 'Ramireez', 3123453454, 'david@pro.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 3, '$2y$07$JBNkd2P5RNJiUbDKaeiOr.g5SjQWtsOFxeknZOpANxZWFaz6U7Ciy', '');
 
 --
 -- Restricciones para tablas volcadas

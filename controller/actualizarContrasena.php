@@ -3,6 +3,10 @@ include('conexion.php');
 
     $documento = $_POST['documento'];
     $contrasena = $_POST['contrasena'];
+    $tipo="no";
+    if(isset($_POST['tipo'])){
+        $tipo=$_POST['tipo'];
+    }
     $pass_cifrado = password_hash($contrasena, PASSWORD_DEFAULT, array("cost" => 7)); //Encripta la clave 
         // Inserta en la base de datos un nuevo usuario
     try {
@@ -16,4 +20,9 @@ include('conexion.php');
     }
     $url= $_SERVER["HTTP_REFERER"];
     // echo '<script language="javascript">alert("juas");</script>';
-    header("location: $url&contrasena=si");
+    if($tipo=="no"){
+        header("location: $url&contrasena=si");
+    }
+    else{
+        header("location: $url?contrasena=si");
+    }

@@ -103,42 +103,47 @@
                                     campos son obligatorios <i class="bi bi-x-octagon-fill"></i></h6>
                             </div>
                             <button type="submit" class="btn btn-success" id="btnEnviar">ACTUALIZAR DATOS</button>
+                            <button type="button" class="btn btn-warning" id="btnActualizarContraseña">
+                                ACTUALIZAR CONTRASEÑA</button>
                         </form>
-                        <form action="../controller/actualizarContrasena.php" method="post">
-                            <h5>CAMBIAR CONTRASEÑA</h5>
-                            <div class="form-row">
-                                <div class="col form-group">
-                                    <input type="number" class="form-control" id="documento" name="documento"
-                                        value="<?php echo $usuarios->pk_id_usr ?>" hidden>
-                                    <label for="contrasena">Nueva Contraseña:</label>
-                                    <input type="password" class="form-control" id="contrasena" name="contrasena" value=""
-                                        required>
-                                    <h6 id="mensajeLetra" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos una
-                                        minuscula<i class="bi bi-x-octagon-fill"></i></h6>
-                                    <h6 id="mensajeMayuscula" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos una
-                                        MAYUSCULA<i class="bi bi-x-octagon-fill"></i></h6>
-                                    <h6 id="mensajeNumero" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos un
-                                        numero<i class="bi bi-x-octagon-fill"></i></h6>
-                                    <h6 id="mensajeCaracteres" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos 7
-                                        caracteres<i class="bi bi-x-octagon-fill"></i></h6>
-                                    <h6 id="mensajeCohinciden" style="color:red"><i class="bi bi-x-octagon-fill"></i>Las
-                                        contraseñas
-                                        deben coincidir<i class="bi bi-x-octagon-fill"></i></h6>
+                        <dialog id="dialogActualizarContraseña" style="min-width: 50%;">
+                            <form action="../controller/actualizarContrasena.php" method="post">
+                                <h5>CAMBIAR CONTRASEÑA</h5>
+                                <div class="form-row">
+                                    <div class="col form-group">
+                                        <input type="number" class="form-control" id="documento" name="documento"
+                                            value="<?php echo $usuarios->pk_id_usr ?>" hidden>
+                                        <label for="contrasena">Nueva Contraseña:</label>
+                                        <input type="password" class="form-control" id="contrasena" name="contrasena" value=""
+                                            required>
+                                        <h6 id="mensajeLetra" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos una
+                                            minuscula<i class="bi bi-x-octagon-fill"></i></h6>
+                                        <h6 id="mensajeMayuscula" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos
+                                            una
+                                            MAYUSCULA<i class="bi bi-x-octagon-fill"></i></h6>
+                                        <h6 id="mensajeNumero" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos un
+                                            numero<i class="bi bi-x-octagon-fill"></i></h6>
+                                        <h6 id="mensajeCaracteres" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al
+                                            menos 7
+                                            caracteres<i class="bi bi-x-octagon-fill"></i></h6>
+                                        <h6 id="mensajeCohinciden" style="color:red"><i class="bi bi-x-octagon-fill"></i>Las
+                                            contraseñas
+                                            deben coincidir<i class="bi bi-x-octagon-fill"></i></h6>
+                                    </div>
+                                    <div class="col form-group">
+                                        <label for="contrasena">Confirmar Contraseña:</label>
+                                        <input type="password" class="form-control" id="ConfirmarContrasena"
+                                            name="ConfirmarContrasena" value="" required>
+                                    </div>
                                 </div>
-                                <div class="col form-group">
-                                    <label for="contrasena">Confirmar Contraseña:</label>
-                                    <input type="password" class="form-control" id="ConfirmarContrasena"
-                                        name="ConfirmarContrasena" value="" required>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                                    <button type="button" class="btn btn-success" onclick="confirmarContraseña()">ACTUALIZAR
+                                        CONTRASEÑA</button>
+                                    <button type="submit" class="btn btn-success" id="btnEnviarC" hidden>Enviar</button>
+                                    <button type="button" class="btn btn-danger" id="btnCerrarContraseña">REGRESAR</button>
                                 </div>
-                            </div>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                                <button type="button" class="btn btn-warning" onclick="confirmarContraseña()">ACTUALIZAR
-                                    CONTRASEÑA</button>
-                                <button type="submit" class="btn btn-success" id="btnEnviarC" hidden>Enviar</button>
-                                <a href="buscarAprendices.php"><button type="button"
-                                        class="btn btn-danger">Regresar</button></a>
-                            </div>
-                        </form>
+                            </form>
+                        </dialog>
                     </div>
                     <?php
         } else if ($usuarios->fk_id_tipo_usr == 3) {
@@ -186,44 +191,47 @@
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-success" id="btnEnviar">ACTUALIZAR DATOS</button>
+                                <button type="button" class="btn btn-warning" id="btnActualizarContraseña">
+                                    ACTUALIZAR CONTRASEÑA</button>
                             </form>
-                            <form action="../controller/actualizarContrasena.php" method="post">
-                                <h5>CAMBIAR CONTRASEÑA</h5>
-                                <div class="form-row">
-                                    <div class="col form-group">
-                                        <input type="text" class="form-control" id="documento" name="documento"
-                                            value="<?php echo $usuarios->pk_id_usr ?>" hidden>
-                                        <label for="contrasena">Contraseña:</label>
-                                        <input type="password" class="form-control" id="contrasena" name="contrasena" value=""
-                                            required>
-                                        <h6 id="mensajeLetra" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos una
-                                            minuscula<i class="bi bi-x-octagon-fill"></i></h6>
-                                        <h6 id="mensajeMayuscula" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos una
-                                            MAYUSCULA<i class="bi bi-x-octagon-fill"></i></h6>
-                                        <h6 id="mensajeNumero" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos un
-                                            numero<i class="bi bi-x-octagon-fill"></i></h6>
-                                        <h6 id="mensajeCaracteres" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos 7
-                                            caracteres<i class="bi bi-x-octagon-fill"></i></h6>
-                                        <h6 id="mensajeCohinciden" style="color:red"><i class="bi bi-x-octagon-fill"></i>Las
-                                            contraseñas
-                                            deben coincidir<i class="bi bi-x-octagon-fill"></i></h6>
+                            <dialog id="dialogActualizarContraseña" style="min-width: 50%;">
+                                <form action="../controller/actualizarContrasena.php" method="post">
+                                    <h5>CAMBIAR CONTRASEÑA</h5>
+                                    <div class="form-row">
+                                        <div class="col form-group">
+                                            <input type="number" class="form-control" id="documento" name="documento"
+                                                value="<?php echo $usuarios->pk_id_usr ?>" hidden>
+                                            <label for="contrasena">Nueva Contraseña:</label>
+                                            <input type="password" class="form-control" id="contrasena" name="contrasena" value=""
+                                                required>
+                                            <h6 id="mensajeLetra" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos una
+                                                minuscula<i class="bi bi-x-octagon-fill"></i></h6>
+                                            <h6 id="mensajeMayuscula" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos
+                                                una
+                                                MAYUSCULA<i class="bi bi-x-octagon-fill"></i></h6>
+                                            <h6 id="mensajeNumero" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos un
+                                                numero<i class="bi bi-x-octagon-fill"></i></h6>
+                                            <h6 id="mensajeCaracteres" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al
+                                                menos 7
+                                                caracteres<i class="bi bi-x-octagon-fill"></i></h6>
+                                            <h6 id="mensajeCohinciden" style="color:red"><i class="bi bi-x-octagon-fill"></i>Las
+                                                contraseñas
+                                                deben coincidir<i class="bi bi-x-octagon-fill"></i></h6>
+                                        </div>
+                                        <div class="col form-group">
+                                            <label for="contrasena">Confirmar Contraseña:</label>
+                                            <input type="password" class="form-control" id="ConfirmarContrasena"
+                                                name="ConfirmarContrasena" value="" required>
+                                        </div>
                                     </div>
-                                    <div class="col form-group">
-                                        <label for="contrasena">Confirmar Contraseña:</label>
-                                        <input type="password" class="form-control" id="ConfirmarContrasena"
-                                            name="ConfirmarContrasena" value="" required>
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                                        <button type="button" class="btn btn-success" onclick="confirmarContraseña()">ACTUALIZAR
+                                            CONTRASEÑA</button>
+                                        <button type="submit" class="btn btn-success" id="btnEnviarC" hidden>Enviar</button>
+                                        <button type="button" class="btn btn-danger" id="btnCerrarContraseña">REGRESAR</button>
                                     </div>
-                                </div>
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                                    <h6 id="mensajeCampos" style="color:red" hidden>*Todos los campos son obligatorios*</h6>
-                                </div>
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                                    <button type="button" class="btn btn-warning" onclick="confirmarContraseña()">ACTUALIZAR
-                                        CONTRASEÑA</button>
-                                    <button type="submit" class="btn btn-success" id="btnEnviarC" hidden>Enviar</button>
-                                    <a href="buscarEmpresas.php"><button type="button" class="btn btn-danger">Regresar</button></a>
-                                </div>
-                            </form>
+                                </form>
+                            </dialog>
                         </div>
                     <?php
         } else if ($usuarios->fk_id_tipo_usr == 4) {
@@ -296,48 +304,52 @@
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-success" id="btnEnviar">ACTUALIZAR DATOS</button>
+                                    <button type="button" class="btn btn-warning" id="btnActualizarContraseña">
+                                        ACTUALIZAR CONTRASEÑA</button>
                                 </form>
-                                <form action="../controller/actualizarContrasena.php" method="post">
-                                    <div class="form-row">
-                                        <div class="col form-group">
-                                            <input type="number" class="form-control" id="documento" name="documento"
-                                                value="<?php echo $usuarios->pk_id_usr ?>" hidden>
-                                            <label for="contrasena">Contraseña:</label>
-                                            <input type="password" class="form-control" id="contrasena" name="contrasena" value=""
-                                                required>
-                                            <h6 id="mensajeLetra" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos una
-                                                minuscula<i class="bi bi-x-octagon-fill"></i></h6>
-                                            <h6 id="mensajeMayuscula" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos una
-                                                MAYUSCULA<i class="bi bi-x-octagon-fill"></i></h6>
-                                            <h6 id="mensajeNumero" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos un
-                                                numero<i class="bi bi-x-octagon-fill"></i></h6>
-                                            <h6 id="mensajeCaracteres" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos 7
-                                                caracteres<i class="bi bi-x-octagon-fill"></i></h6>
-                                            <h6 id="mensajeCohinciden" style="color:red"><i class="bi bi-x-octagon-fill"></i>Las
-                                                contraseñas
-                                                deben coincidir<i class="bi bi-x-octagon-fill"></i></h6>
+                                <dialog id="dialogActualizarContraseña" style="min-width: 50%;">
+                                    <form action="../controller/actualizarContrasena.php" method="post">
+                                        <h5>CAMBIAR CONTRASEÑA</h5>
+                                        <div class="form-row">
+                                            <div class="col form-group">
+                                                <input type="number" class="form-control" id="documento" name="documento"
+                                                    value="<?php echo $usuarios->pk_id_usr ?>" hidden>
+                                                <label for="contrasena">Nueva Contraseña:</label>
+                                                <input type="password" class="form-control" id="contrasena" name="contrasena" value=""
+                                                    required>
+                                                <h6 id="mensajeLetra" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos una
+                                                    minuscula<i class="bi bi-x-octagon-fill"></i></h6>
+                                                <h6 id="mensajeMayuscula" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos
+                                                    una
+                                                    MAYUSCULA<i class="bi bi-x-octagon-fill"></i></h6>
+                                                <h6 id="mensajeNumero" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos un
+                                                    numero<i class="bi bi-x-octagon-fill"></i></h6>
+                                                <h6 id="mensajeCaracteres" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al
+                                                    menos 7
+                                                    caracteres<i class="bi bi-x-octagon-fill"></i></h6>
+                                                <h6 id="mensajeCohinciden" style="color:red"><i class="bi bi-x-octagon-fill"></i>Las
+                                                    contraseñas
+                                                    deben coincidir<i class="bi bi-x-octagon-fill"></i></h6>
+                                            </div>
+                                            <div class="col form-group">
+                                                <label for="contrasena">Confirmar Contraseña:</label>
+                                                <input type="password" class="form-control" id="ConfirmarContrasena"
+                                                    name="ConfirmarContrasena" value="" required>
+                                            </div>
                                         </div>
-                                        <div class="col form-group">
-                                            <label for="contrasena">Confirmar Contraseña:</label>
-                                            <input type="password" class="form-control" id="ConfirmarContrasena"
-                                                name="ConfirmarContrasena" value="" required>
+                                        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                                            <button type="button" class="btn btn-success" onclick="confirmarContraseña()">ACTUALIZAR
+                                                CONTRASEÑA</button>
+                                            <button type="submit" class="btn btn-success" id="btnEnviarC" hidden>Enviar</button>
+                                            <button type="button" class="btn btn-danger" id="btnCerrarContraseña">REGRESAR</button>
                                         </div>
-                                    </div>
-                                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                                        <h6 id="mensajeCampos" style="color:red" hidden>*Todos los campos son obligatorios*</h6>
-                                    </div>
-                                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                                        <button type="button" class="btn btn-warning" onclick="confirmarContraseña()">ACTUALIZAR
-                                            CONTRASEÑA</button>
-                                        <button type="submit" class="btn btn-success" id="btnEnviarC" hidden>Enviar</button>
-                                        <a href="buscarInstructores.php"><button type="button"
-                                                class="btn btn-danger">Regresar</button></a>
-                                    </div>
-                                </form>
+                                    </form>
+                                </dialog>
                             </div>
                     <?php
         } else if ($usuarios->fk_id_tipo_usr == 2) {
             ?>
+
                                 <!-- EDITAR FUNCIONARIO -->
                                 <div class="container font-weight-bold" style="padding-bottom: 2rem;" id="editarFuncionario">
                                     <br>
@@ -414,44 +426,47 @@
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-success" id="btnEnviar">ACTUALIZAR DATOS</button>
+                                        <button type="button" class="btn btn-warning" id="btnActualizarContraseña">
+                                            ACTUALIZAR CONTRASEÑA</button>
                                     </form>
-                                    <form action="../controller/actualizarContrasena.php" method="post">
-                                        <div class="form-row">
-                                            <div class="col form-group">
-                                                <input type="number" class="form-control" id="documento" name="documento"
-                                                    value="<?php echo $usuarios->pk_id_usr ?>" hidden>
-                                                <label for="contrasena">Contraseña:</label>
-                                                <input type="password" class="form-control" id="contrasena" name="contrasena" value=""
-                                                    required>
-                                                <h6 id="mensajeLetra" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos una
-                                                    minuscula<i class="bi bi-x-octagon-fill"></i></h6>
-                                                <h6 id="mensajeMayuscula" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos una
-                                                    MAYUSCULA<i class="bi bi-x-octagon-fill"></i></h6>
-                                                <h6 id="mensajeNumero" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos un
-                                                    numero<i class="bi bi-x-octagon-fill"></i></h6>
-                                                <h6 id="mensajeCaracteres" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos 7
-                                                    caracteres<i class="bi bi-x-octagon-fill"></i></h6>
-                                                <h6 id="mensajeCohinciden" style="color:red"><i class="bi bi-x-octagon-fill"></i>Las
-                                                    contraseñas
-                                                    deben coincidir<i class="bi bi-x-octagon-fill"></i></h6>
+                                    <dialog id="dialogActualizarContraseña" style="min-width: 50%;">
+                                        <form action="../controller/actualizarContrasena.php" method="post">
+                                            <h5>CAMBIAR CONTRASEÑA</h5>
+                                            <div class="form-row">
+                                                <div class="col form-group">
+                                                    <input type="number" class="form-control" id="documento" name="documento"
+                                                        value="<?php echo $usuarios->pk_id_usr ?>" hidden>
+                                                    <label for="contrasena">Nueva Contraseña:</label>
+                                                    <input type="password" class="form-control" id="contrasena" name="contrasena" value=""
+                                                        required>
+                                                    <h6 id="mensajeLetra" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos una
+                                                        minuscula<i class="bi bi-x-octagon-fill"></i></h6>
+                                                    <h6 id="mensajeMayuscula" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos
+                                                        una
+                                                        MAYUSCULA<i class="bi bi-x-octagon-fill"></i></h6>
+                                                    <h6 id="mensajeNumero" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al menos un
+                                                        numero<i class="bi bi-x-octagon-fill"></i></h6>
+                                                    <h6 id="mensajeCaracteres" style="color:red"><i class="bi bi-x-octagon-fill"></i>Al
+                                                        menos 7
+                                                        caracteres<i class="bi bi-x-octagon-fill"></i></h6>
+                                                    <h6 id="mensajeCohinciden" style="color:red"><i class="bi bi-x-octagon-fill"></i>Las
+                                                        contraseñas
+                                                        deben coincidir<i class="bi bi-x-octagon-fill"></i></h6>
+                                                </div>
+                                                <div class="col form-group">
+                                                    <label for="contrasena">Confirmar Contraseña:</label>
+                                                    <input type="password" class="form-control" id="ConfirmarContrasena"
+                                                        name="ConfirmarContrasena" value="" required>
+                                                </div>
                                             </div>
-                                            <div class="col form-group">
-                                                <label for="contrasena">Confirmar Contraseña:</label>
-                                                <input type="password" class="form-control" id="ConfirmarContrasena"
-                                                    name="ConfirmarContrasena" value="" required>
+                                            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                                                <button type="button" class="btn btn-success" onclick="confirmarContraseña()">ACTUALIZAR
+                                                    CONTRASEÑA</button>
+                                                <button type="submit" class="btn btn-success" id="btnEnviarC" hidden>Enviar</button>
+                                                <button type="button" class="btn btn-danger" id="btnCerrarContraseña">REGRESAR</button>
                                             </div>
-                                        </div>
-                                        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                                            <h6 id="mensajeCampos" style="color:red" hidden>*Todos los campos son obligatorios*</h6>
-                                        </div>
-                                        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                                            <button type="button" class="btn btn-warning" onclick="confirmarContraseña()">ACTUALIZAR
-                                                CONTRASEÑA</button>
-                                            <button type="submit" class="btn btn-success" id="btnEnviarC" hidden>Enviar</button>
-                                            <a href="buscarFuncionarios.php"><button type="button"
-                                                    class="btn btn-danger">Regresar</button></a>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </dialog>
                                 </div>
                     <?php
         }
@@ -464,6 +479,18 @@
     ?>
 </body>
 <script>
+    // MUESTRA O ESCONDE EL DIALOG PARA ACTUAIZAR LA CONTRASEÑA
+    const btnActualizarContraseña = document.getElementById('btnActualizarContraseña');
+    const btnCerrarContraseña = document.getElementById('btnCerrarContraseña');
+    const dialogActualizarContraseña = document.getElementById('dialogActualizarContraseña');
+
+    btnActualizarContraseña.addEventListener('click', () => {
+        dialogActualizarContraseña.showModal();
+    });
+    btnCerrarContraseña.addEventListener('click', () => {
+        dialogActualizarContraseña.close();
+    });
+
     function confirmarContraseña() {
         clave1 = $('#contrasena').val()
         clave2 = $('#ConfirmarContrasena').val()

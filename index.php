@@ -55,6 +55,7 @@ if (isset($_GET['mensajeRegistro'])) {
                                     <label for="password"><i class="bi bi-key-fill"></i>Contraseña:</label>
                                     <input type="password" class="form-control" id="password" name="password" required>
                                 </div>
+                                <a href="views/recuperarPass.php">Olvido su contraseña?</a>
                                 <button type="submit" class="btn btn-success btn-block mt-4">Iniciar sesión</button>
                                 <a href="views/registroAprendiz"><button type="button"
                                         class="btn btn-primary btn-block mt-4">Registro Aprendiz</button></a>
