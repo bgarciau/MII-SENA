@@ -52,7 +52,7 @@
                     </div>
                     <div class="col form-group">
                         <label for="telefono">Teléfono:</label>
-                        <input type="numberber" class="form-control" id="telefono"
+                        <input type="number" class="form-control" id="telefono"
                             placeholder="Introduce tu número de teléfono" name="telefono" required>
                     </div>
                 </div>

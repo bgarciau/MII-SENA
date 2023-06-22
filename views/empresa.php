@@ -58,7 +58,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="telefono">Teléfono:</label>
-                                <input type="numberber" class="form-control" id="telefono" name="telefono"
+                                <input type="number" class="form-control" id="telefono" name="telefono"
                                     value="<?php echo $datos->usr_telefono ?>" required>
                             </div>
                             <input type="submit" class="btn btn-success btn-block mt-2" name="guardarCambios"

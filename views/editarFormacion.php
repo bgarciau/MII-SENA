@@ -46,16 +46,15 @@
                             <input type="date" class="form-control" name="terminacionFicha"
                                 value="<?php echo $datosFicha->ficha_fecha_terminacion; ?>" autofocus required>
                         </div>
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
                             <label class="form-label">Etapa: </label>
                             <select class="form-select" aria-label="Default" name="etapaFicha" autofocus required>
                                 <option selected>
-                                    <?php echo $datosFicha->ficha_etapa; ?>
                                 </option>
                                 <option value="LECTIVA">LECTIVA</option>
                                 <option value="PRACTICA">PRACTICA</option>
                             </select>
-                        </div>
+                        </div> -->
                         <div class="mb-3">
                             <label class="form-label">Programa: </label>
                             <select class="form-select" aria-label="Default" name="programaFicha" autofocus required
@@ -116,14 +115,12 @@
                                 value="<?php echo $datosPrograma->pro_nombre ?>" autofocus required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Perfil: </label>
-                            <input type="text" class="form-control" name="perfilPrograma"
-                                value="<?php echo $datosPrograma->pro_perfil ?>" autofocus required>
+                            <label class="form-label">Perfil: </label><br>
+                                <textarea class="form-control" name="perfilPrograma" id="perfilPrograma" rows="3" autofocus required><?php echo $datosPrograma->pro_perfil ?></textarea>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Ocupaciones: </label>
-                            <input type="text" class="form-control" name="ocupacionesPrograma"
-                                value="<?php echo $datosPrograma->pro_ocupaciones ?>" autofocus required>
+                                <textarea class="form-control" name="ocupacionesPrograma" id="ocupacionesPrograma" rows="3" autofocus required><?php echo $datosPrograma->pro_ocupaciones ?></textarea>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Centro: </label>

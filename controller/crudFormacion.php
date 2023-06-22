@@ -13,14 +13,14 @@ if (isset($_GET['accion']) && $_GET['accion'] != "") {
             $idFicha = $_POST["idFicha"];
             $inicioFicha = $_POST["inicioFicha"];
             $terminacionFicha = $_POST["terminacionFicha"];
-            $etapaFicha = $_POST["etapaFicha"];
+            // $etapaFicha = $_POST["etapaFicha"];
             $programaFicha = $_POST["programaFicha"];
             try {
-                $query = "INSERT INTO fichas(pk_id_ficha,ficha_fecha_inicio,ficha_fecha_terminacion,ficha_etapa,fk_id_pro) VALUES (?,?,?,?,?);";
+                $query = "INSERT INTO fichas(pk_id_ficha,ficha_fecha_inicio,ficha_fecha_terminacion,fk_id_pro) VALUES (?,?,?,?);";
                 $sentencia = $base->prepare($query);
-                $resultado = $sentencia->execute([$idFicha, $inicioFicha, $terminacionFicha, $etapaFicha, $programaFicha]);
+                $resultado = $sentencia->execute([$idFicha, $inicioFicha, $terminacionFicha, $programaFicha]);
             } catch (Exception $e) {
-                header('Location: ../views/formacion.php?mensaje=error');
+                header('Location: ../views/formacion.php?mensaje=errorAgregarF');
                 exit();
             }
         } else if ($tipo == "programa") {
@@ -35,7 +35,7 @@ if (isset($_GET['accion']) && $_GET['accion'] != "") {
                 $sentencia = $base->prepare($query);
                 $resultado = $sentencia->execute([$idPrograma, $nombrePrograma, $perfilPrograma, $ocupacionesPrograma, $centroPrograma]);
             } catch (Exception $e) {
-                header('Location: ../views/formacion.php?mensaje=error');
+                header('Location: ../views/formacion.php?mensaje=errorAgregarP');
                 exit();
             }
         } else if ($tipo == "centro") {
@@ -73,12 +73,12 @@ if (isset($_GET['accion']) && $_GET['accion'] != "") {
             $idFicha = $_POST["idFicha"];
             $inicioFicha = $_POST["inicioFicha"];
             $terminacionFicha = $_POST["terminacionFicha"];
-            $etapaFicha = $_POST["etapaFicha"];
+            // $etapaFicha = $_POST["etapaFicha"];
             $programaFicha = $_POST["programaFicha"];
             try {
-                $query = "UPDATE fichas SET ficha_fecha_inicio=? ,ficha_fecha_terminacion=?, ficha_etapa=? WHERE pk_id_ficha=$idFicha;";
+                $query = "UPDATE fichas SET ficha_fecha_inicio=? ,ficha_fecha_terminacion=? WHERE pk_id_ficha=$idFicha;";
                 $sentencia = $base->prepare($query);
-                $resultado = $sentencia->execute([$inicioFicha, $terminacionFicha, $etapaFicha]);
+                $resultado = $sentencia->execute([$inicioFicha, $terminacionFicha]);
             } catch (Exception $e) {
                 echo $e;
                 // header('Location: ../views/formacion.php?mensaje=error');

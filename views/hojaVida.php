@@ -362,18 +362,15 @@
                                         legalizacion del contrato de aprendizaje</h6>
                                     <div class="form-group">
                                         <label for="nombre">Nombre Funcionario:</label>
-                                        <input type="text" class="form-control" id="nombreFuncionario"
-                                            placeholder="Ingrese el nombre del funcionario" name="nombreFuncionario">
+                                        <input type="text" class="form-control" id="nombreFuncionario" name="nombreFuncionario" value="Carlos Ruiz">
                                     </div>
                                     <div class="form-group">
                                         <label for="telefono">Teléfono:</label>
-                                        <input type="number" class="form-control" id="telefonoFuncionario"
-                                            placeholder="Ingrese el número de teléfono" name="telefonoFuncionario">
+                                        <input type="number" class="form-control" id="telefonoFuncionario" value="3124564567" name="telefonoFuncionario">
                                     </div>
                                     <div class="form-group">
                                         <label for="correo">Correo Electrónico:</label>
-                                        <input type="email" class="form-control" id="correoFuncionario"
-                                            placeholder="Ingrese el correo electrónico" name="correoFuncionario">
+                                        <input type="email" class="form-control" id="correoFuncionario" value="carlosruiz@sena.com" name="correoFuncionario">
                                     </div>
                                 </div>
                             </div>
@@ -390,28 +387,23 @@
                                 <div class="accordion-body">
                                     <div class="form-group">
                                         <label for="nit">NIT:</label>
-                                        <input type="number" class="form-control" id="nitCentro"
-                                            placeholder="Ingrese el NIT del centro de formación" name="nitCentro">
+                                        <input type="text" class="form-control" id="nitCentro" value="899.999034-1" name="nitCentro">
                                     </div>
                                     <div class="form-group">
                                         <label for="centro">Centro de Formación:</label>
-                                        <input type="text" class="form-control" id="centroFormacion"
-                                            placeholder="Ingrese el nombre del centro de formación" name="centroFormacion">
+                                        <input type="text" class="form-control" id="centroFormacion" value="Centro de Automatizacion Industrial" name="centroFormacion">
                                     </div>
                                     <div class="form-group">
                                         <label for="representante">Representante Legal:</label>
-                                        <input type="text" class="form-control" id="representante"
-                                            placeholder="Ingrese el nombre del representante legal" name="representante">
+                                        <input type="text" class="form-control" id="representante" value="Jorge Eduardo Londoño ulloa" name="representante">
                                     </div>
                                     <div class="form-group">
                                         <label for="correo">Correo Electrónico:</label>
-                                        <input type="email" class="form-control" id="correoCentro"
-                                            placeholder="Ingrese el correo electrónico" name="correoCentro">
+                                        <input type="email" class="form-control" id="correoCentro" value="JorgeLondoño@sena.com" name="correoCentro">
                                     </div>
                                     <div class="form-group">
                                         <label for="telefono">Teléfono:</label>
-                                        <input type="number" class="form-control" id="telefonoCentro"
-                                            placeholder="Ingrese el número de teléfono" name="telefonoCentro">
+                                        <input type="number" class="form-control" id="telefonoCentro" value="3214535369" name="telefonoCentro">
                                     </div>
                                 </div>
                             </div>
@@ -529,7 +521,7 @@
                         </div>
                     </div>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                        <button class="btn btn-success me-md-2" type="submit">GUARDAR</button>
+                        <button class="btn btn-success me-md-2" type="submit" id="btn_guardar">GUARDAR</button>
                         <a href="javascript:history.back(-1);"><button class="btn btn-danger me-md-2" type="button">CANCELAR</button></a>
                     </div>
                 </form>
@@ -565,14 +557,51 @@
     }
     // PERMISOS PARA EL FUNCIONARIO
     else if(<?php echo $tipo ?>==2){
-        $('#nombreFuncionario').prop("required",true);
-        $('#telefonoFuncionario').prop("required",true);
-        $('#correoFuncionario').prop("required",true);
-        $('#nitCentro').prop("required",true);
-        $('#centroFormacion').prop("required",true);
-        $('#representante').prop("required",true);
-        $('#correoCentro').prop("required",true);
-        $('#telefonoCentro').prop("required",true);
+        $('#nombreFuncionario').prop("disabled",true);
+        $('#telefonoFuncionario').prop("disabled",true);
+        $('#correoFuncionario').prop("disabled",true);
+        $('#nitCentro').prop("disabled",true);
+        $('#centroFormacion').prop("disabled",true);
+        $('#representante').prop("disabled",true);
+        $('#correoCentro').prop("disabled",true);
+        $('#telefonoCentro').prop("disabled",true);
+        $('#nombreRecursos').prop("disabled",true);
+        $('#telefonoRecursos').prop("disabled",true);
+        $('#correoRecursos').prop("disabled",true);
+        $('#observacionesRecursos').prop("disabled",true);
+        $('#ciudadDilegenciamiento').prop("disabled",true);
+        $('#fechaDiligenciamiento').prop("disabled",true);
+        $('#firmaResursos').prop("disabled",true);
+        $('#contratar').prop("disabled",true);
+        $('#NoContratar').prop("disabled",true);
+
+        //DATOS QUE LA EMPRESA PUEDE VER
+        $('#fecha_nacimiento').prop("disabled",true);
+        $('#telefonos').prop("disabled",true);
+        $('#correo_misena').prop("disabled",true);
+        $('#libreta_militar').prop("disabled",true);
+        $('#direccion').prop("disabled",true);
+        $('#estrato').prop("disabled",true);
+        $('#ciudad').prop("disabled",true);
+        $('#titulo_obtenido').prop("disabled",true);
+        $('#institucion_educativa').prop("disabled",true);
+        $('#fecha_de_grado').prop("disabled",true);
+        $('#nivel').prop("disabled",true);
+        $('#nombre_estudios').prop("disabled",true);
+        $('#institucion_educativa2').prop("disabled",true);
+        $('#semestres_aprovados').prop("disabled",true);
+        $('#firma').prop("disabled",true);
+        
+        $('#nombreFuncionario').prop("disabled",true);
+        $('#telefonoFuncionario').prop("disabled",true);
+        $('#correoFuncionario').prop("disabled",true);
+        $('#nitCentro').prop("disabled",true);
+        $('#centroFormacion').prop("disabled",true);
+        $('#representante').prop("disabled",true);
+        $('#correoCentro').prop("disabled",true);
+        $('#telefonoCentro').prop("disabled",true);
+        $('#btn_guardar').prop("hidden",true);
+
     }
     // PERMISOS PARA LA EMPRESA
     else if(<?php echo $tipo ?>==3){

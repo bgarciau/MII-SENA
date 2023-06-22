@@ -12,6 +12,37 @@
     session_start();
     require_once("header.php");
     include('../controller/conexion.php');
+    $fichas = $base->query("SELECT * FROM fichas")->fetchAll(PDO::FETCH_OBJ);
+        foreach ($fichas as $datosFicha) {
+            $hoy = date('Y-m-d');
+            $fin = $datosFicha->ficha_fecha_terminacion;
+            if($hoy <= $fin){
+            $datetime1 = new DateTime($hoy);
+            $datetime2 = new DateTime($fin);
+
+            # obtenemos la diferencia entre las dos fechas
+            $interval = $datetime2->diff($datetime1);
+
+            # obtenemos la diferencia en meses
+            // $intervalMeses = $interval->format("%m");
+            $intervalMeses = $interval->format('%y')*12 + $interval->format('%m'); 
+            echo "-".$intervalMeses;
+            }
+            else{
+                $intervalMeses=0;
+            }
+            if ($intervalMeses <= 6) {
+                $ficha = $datosFicha->pk_id_ficha;
+                $query = "UPDATE fichas SET ficha_etapa='PRACTICA' WHERE pk_id_ficha=$ficha;";
+                $sentencia = $base->prepare($query);
+                $resultado = $sentencia->execute();
+            } else {
+                $ficha = $datosFicha->pk_id_ficha;
+                $query = "UPDATE fichas SET ficha_etapa='LECTIVA' WHERE pk_id_ficha=$ficha;";
+                $sentencia = $base->prepare($query);
+                $resultado = $sentencia->execute();
+            }
+        }
 
     $mensaje="no";
     if (isset($_GET["mensaje"])) {
@@ -69,7 +100,6 @@
                                             <?php
                                             $programa = $datosFicha->fk_id_pro;
                                             $programas = $base->query("SELECT * FROM programas WHERE pk_id_pro=$programa")->fetchAll(PDO::FETCH_OBJ);
-                                            $i = 1;
                                             foreach ($programas as $datosPrograma) {
                                                 echo $datosPrograma->pro_nombre;
                                             }
@@ -115,14 +145,14 @@
                             <label class="form-label">Fecha Terminacion: </label>
                             <input type="date" class="form-control" name="terminacionFicha" autofocus required>
                         </div>
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
                             <label class="form-label">Etapa: </label>
                             <select class="form-select" aria-label="Default" name="etapaFicha" autofocus required>
                                 <option selected>Seleccione una opcion</option>
                                 <option value="LECTIVA">LECTIVA</option>
                                 <option value="PRACTICA">PRACTICA</option>
                             </select>
-                        </div>
+                        </div> -->
                         <div class="mb-3">
                             <label class="form-label">Programa: </label>
                             <select class="form-select" aria-label="Default" name="programaFicha" autofocus required>
@@ -199,7 +229,6 @@
                                             <?php
                                             $centro = $datosPrograma->fk_id_cefo;
                                             $centros = $base->query("SELECT * FROM centros_formacion WHERE pk_id_cefo=$centro")->fetchAll(PDO::FETCH_OBJ);
-                                            $i = 1;
                                             foreach ($centros as $datosCentro) {
                                                 echo $datosCentro->cefo_nom_centro_formacion;
                                             }
@@ -245,12 +274,12 @@
                             <input type="text" class="form-control" name="nombrePrograma" autofocus required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Perfil: </label>
-                            <input type="text" class="form-control" name="perfilPrograma" autofocus required>
+                            <label class="form-label">Perfil: </label><br>
+                            <textarea class="form-control" name="perfilPrograma" id="perfilPrograma" rows="3" autofocus required></textarea>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Ocupaciones: </label>
-                            <input type="text" class="form-control" name="ocupacionesPrograma" autofocus required>
+                            <label class="form-label">Ocupaciones: </label><br>
+                            <textarea class="form-control" name="ocupacionesPrograma" id="ocupacionesPrograma" rows="3" autofocus required></textarea>
                         </div>
                         <div class="mb-3" hidden>
                             <label class="form-label">Centro: </label>
@@ -421,6 +450,22 @@
     if('<?php echo $mensaje ?>' == 'error'){
         Swal.fire({
                 title: 'Error al eliminar el Programa, no se puede eliminar ya que hay fichas que pertenecen a este',
+                color: '#ffffff',
+                icon: 'error',
+                iconColor: 'red',
+            })
+    }
+    if('<?php echo $mensaje ?>' == 'errorAgregarP'){
+        Swal.fire({
+                title: 'Error al agregar el programa, el ID programa ya existe',
+                color: '#ffffff',
+                icon: 'error',
+                iconColor: 'red',
+            })
+    }
+    if('<?php echo $mensaje ?>' == 'errorAgregarF'){
+        Swal.fire({
+                title: 'Error al agregar la ficha, el ID ficha ya existe',
                 color: '#ffffff',
                 icon: 'error',
                 iconColor: 'red',

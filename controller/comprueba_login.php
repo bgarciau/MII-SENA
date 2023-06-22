@@ -52,15 +52,21 @@ try {
         foreach ($fichas as $datosFicha) {
             $hoy = date('Y-m-d');
             $fin = $datosFicha->ficha_fecha_terminacion;
-            $datetime1 = new DateTime($hoy);
-            $datetime2 = new DateTime($fin);
-
-            # obtenemos la diferencia entre las dos fechas
-            $interval = $datetime2->diff($datetime1);
-
-            # obtenemos la diferencia en meses
-            $intervalMeses = $interval->format("%m");
-            echo $intervalMeses;
+            if($hoy <= $fin){
+                $datetime1 = new DateTime($hoy);
+                $datetime2 = new DateTime($fin);
+    
+                # obtenemos la diferencia entre las dos fechas
+                $interval = $datetime2->diff($datetime1);
+    
+                # obtenemos la diferencia en meses
+                // $intervalMeses = $interval->format("%m");
+                $intervalMeses = $interval->format('%y')*12 + $interval->format('%m'); 
+                echo "-".$intervalMeses;
+                }
+                else{
+                    $intervalMeses=0;
+                }
             if ($intervalMeses <= 6) {
                 $ficha = $datosFicha->pk_id_ficha;
                 $query = "UPDATE fichas SET ficha_etapa='PRACTICA' WHERE pk_id_ficha=$ficha;";

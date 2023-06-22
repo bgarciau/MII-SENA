@@ -51,7 +51,7 @@
                     <div class="col form-group">
                         <label for="documento">Documento:</label>
                         <input type="number" class="form-control" id="documento"
-                            placeholder="Introduce tu número de documento" name="documento" required>
+                            placeholder="Introduce tu número de documento" name="documento" max="9999999999" required>
                     </div>
                 </div>
                 <div class="form-row">
@@ -71,7 +71,7 @@
                     <div class="col form-group">
                         <label for="cargo">Cargo:</label>
                         <input type="text" class="form-control" id="cargo" name="cargo"
-                            placeholder="Introduce tu número de cargo" required>                    </div>
+                            placeholder="Introduce tu número de cargo" required></div>
                 </div>
                 <div class="form-row">
                     <div class="col form-group">
@@ -81,8 +81,8 @@
                     </div>
                     <div class="col form-group">
                         <label for="telefono">Teléfono:</label>
-                        <input type="numberber" class="form-control" id="telefono"
-                            placeholder="Introduce tu número de teléfono" name="telefono" required>
+                        <input type="number" class="form-control" id="telefono"
+                            placeholder="Introduce tu número de teléfono" name="telefono" max="9999999999" required>
                     </div>
                 </div>
                 <div class="form-row">

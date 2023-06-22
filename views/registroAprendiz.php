@@ -56,7 +56,7 @@
                     <div class="col form-group">
                         <label for="documento">Documento:</label>
                         <input type="number" class="form-control" id="documento"
-                            placeholder="Introduce tu número de documento" name="documento" required>
+                            placeholder="Introduce tu número de documento" name="documento" max="9999999999" required>
                     </div>
                 </div>
                 <div class="form-row">
@@ -90,7 +90,7 @@
                     <div class="col form-group">
                         <label for="telefono">Teléfono:</label>
                         <input type="number" class="form-control" id="telefono"
-                            placeholder="Introduce tu número de teléfono" name="telefono" required>
+                            placeholder="Introduce tu número de teléfono" name="telefono" max="9999999999" required>
                     </div>
                 </div>
                 <div class="form-row">
@@ -194,7 +194,7 @@
                     enviar = 'no';
                 }
 
-                if (enviar == 'si') {
+                if (enviar == 'si' && ficha== "SI") {
                     $('#btnEnviar').click()
                 }
 

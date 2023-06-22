@@ -17,4 +17,4 @@ Todos los derechos reservados © 2023 ::.
 </div>
 <!-- Footer -->
 <!-- data tables -->
-<script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
+<script src="../DataTables/datatables.min.js"></script>
